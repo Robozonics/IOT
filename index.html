@@ -8,6 +8,14 @@
     
     <style>
         /* CSS STYLES */
+        :root {
+            /* Define reusable colors */
+            --bg-dark: #0A0A0A;
+            --gold-primary: #FFD700;
+            --gold-shadow: rgba(255, 215, 0, 0.7);
+            --text-light: #F0F0F0;
+        }
+
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -16,91 +24,114 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #111; /* Dark background */
-            color: #FFD700; /* Gold text */
+            /* Use a subtle gradient for depth */
+            background: linear-gradient(135deg, #181818, var(--bg-dark)); 
+            color: var(--gold-primary); 
             text-align: center;
             overflow: hidden;
         }
 
         .container {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
+            padding: 20px 30px;
+            background: rgba(0, 0, 0, 0.75);
             border-radius: 15px;
-            box-shadow: 0 0 50px rgba(255, 215, 0, 0.4); /* Gold glow effect */
+            /* Enhanced shadow for a premium feel */
+            box-shadow: 0 0 20px var(--gold-shadow), 0 0 40px var(--gold-shadow) inset; 
+            border: 2px solid var(--gold-primary);
+            max-width: 90%; /* Ensures it doesn't spill on small phones */
         }
 
         h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
+            font-size: 3.5em;
+            margin-bottom: 5px;
             letter-spacing: 5px;
-            text-shadow: 0 0 10px #FFD700;
+            text-shadow: 0 0 10px var(--gold-primary);
         }
         
         h2 {
-            font-size: 1.5em;
-            margin-bottom: 40px;
-            color: #BBB;
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            color: var(--text-light);
+            font-weight: 500;
         }
 
         #countdown {
             display: flex;
-            gap: 20px;
+            gap: 15px; /* Reduced gap for mobile */
             justify-content: center;
+            flex-wrap: wrap; /* Allows wrapping on very small screens */
         }
 
         .time-block {
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #222;
-            padding: 20px 30px;
-            border-radius: 10px;
-            min-width: 100px;
+            background: #1F1F1F;
+            padding: 15px 20px; /* Adjusted padding */
+            border-radius: 8px;
+            min-width: 70px; /* Ensures minimum size */
+            border-left: 3px solid var(--gold-primary); /* Small accent */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            transition: transform 0.2s;
+        }
+        
+        .time-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
         }
 
         .time-block span:first-child {
-            font-size: 4em;
+            font-size: 3.5em; /* Adjusted for better fit */
             font-weight: 700;
-            line-height: 1;
-            color: #FFD700;
+            line-height: 1.1;
+            color: var(--gold-primary);
         }
 
         .label {
-            font-size: 0.9em;
+            font-size: 0.8em;
             margin-top: 5px;
             text-transform: uppercase;
             color: #AAA;
+            font-weight: 600;
         }
 
         /* Message style when the New Year arrives */
         .arrived {
-            color: #FFFFFF;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
+            /* Text animation/color for the final message */
+            background: linear-gradient(90deg, #FFD700, #FFA500, #FFEA00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-size: 5em !important;
+            font-size: 5.5em !important;
             animation: pulse 1s infinite alternate;
         }
         
         @keyframes pulse {
-            from { transform: scale(1); opacity: 1; }
-            to { transform: scale(1.05); opacity: 0.9; }
+            from { transform: scale(1); opacity: 1; text-shadow: 0 0 5px var(--gold-primary); }
+            to { transform: scale(1.05); opacity: 0.9; text-shadow: 0 0 15px var(--gold-primary), 0 0 20px #FFA500; }
         }
 
-        @media (max-width: 600px) {
+        /* MEDIA QUERY FOR SMALL SCREENS (Mobile adjustments) */
+        @media (max-width: 500px) {
             h1 {
-                font-size: 2em;
+                font-size: 2.2em;
                 letter-spacing: 2px;
+            }
+            h2 {
+                font-size: 1.1em;
+                margin-bottom: 20px;
             }
             #countdown {
                 gap: 10px;
             }
             .time-block {
                 padding: 15px 10px;
-                min-width: 70px;
+                min-width: 60px;
             }
             .time-block span:first-child {
-                font-size: 2.5em;
+                font-size: 2.8em;
+            }
+            .arrived {
+                 font-size: 3.5em !important;
             }
         }
     </style>
@@ -140,7 +171,7 @@
         const messageEl = document.getElementById('new-year-message');
         const countdownContainer = document.getElementById('countdown');
 
-        // Target Date: January 1st, 2026, 00:00:00
+        // Target Date: January 1st, 2026, 00:00:00 (Local Time)
         const newYear = new Date("Jan 1, 2026 00:00:00").getTime();
 
         function countdownTimer() {
