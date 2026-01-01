@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rehan RS | Engineer & Technologist</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         /* --- CSS STYLES --- */
         :root {
-            --primary-color: #00d4ff;       /* Bright Cyan */
+            --primary-color: #00d4ff;           /* Bright Cyan */
+            --secondary-color: #6a00ff;         /* Deep Purple for Gradient */
             --primary-glow: rgba(0, 212, 255, 0.3);
-            --bg-dark: #091a2e;             /* Deep Blue/Black */
-            --bg-card: #13243a;             /* Card Background */
+            --bg-dark: #091a2e;                 /* Deep Blue/Black */
+            --bg-card: #13243a;                 /* Card Background */
             --text-white: #f0f7ff;
             --text-light: #b0c2d6;
             --font-mono: 'Roboto Mono', monospace;
@@ -41,6 +42,19 @@
         ul { list-style: none; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 100px 20px; }
+        b { font-weight: 600; color: var(--text-white); }
+        .tech-bold { color: var(--primary-color); font-weight: 700; }
+
+        /* --- GRADIENT TEXT --- */
+        .gradient-text {
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
 
         /* --- NAVIGATION --- */
         .navbar {
@@ -119,7 +133,6 @@
             min-height: 1.8em;
         }
         
-        /* Typing cursor */
         .hero h3 span.cursor {
             color: var(--primary-color);
             font-weight: 700;
@@ -187,7 +200,7 @@
             font-size: 1.15rem;
             color: var(--text-light);
             line-height: 1.8;
-            padding: 0 20px;
+            padding: 0 10px;
             text-align: center;
         }
         
@@ -257,7 +270,7 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: var(--primary-color);
+            background: linear-gradient(90deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             transform: translateX(-100%);
             transition: var(--transition);
         }
@@ -328,13 +341,14 @@
 
         .copyright { font-size: 0.8rem; color: var(--text-light); }
 
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 900px) {
-            .hero h1 { font-size: 3rem; }
-            .hero h3 { font-size: 1.5rem; }
-        }
-
+        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
+            .section { padding: 80px 20px; }
+            .hero h1 { font-size: 3rem; }
+            .hero h3 { font-size: 1.3rem; }
+            .section-title { margin-bottom: 50px; font-size: 1.8rem; }
+            
+            /* Mobile Nav Toggle */
             .hamburger { display: block; }
             .nav-links {
                 position: fixed;
@@ -351,8 +365,16 @@
             }
 
             .nav-links.active { right: 0; }
-            .section { padding: 80px 20px; }
-            .section-title { margin-bottom: 50px; font-size: 1.8rem; }
+            .nav-links a { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.1); width: 80%; margin: 0 auto; }
+            .nav-links a:last-child { border-bottom: none; }
+            .nav-links a::after { display: none; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h3 { font-size: 1.1rem; }
+            .social-icons a { margin: 0 10px; font-size: 1.7rem; }
+            .projects-grid { grid-template-columns: 1fr; } /* Stack cards on very small screens */
         }
     </style>
 </head>
@@ -376,10 +398,10 @@
 
     <section id="home" class="hero">
         <h4><span style="font-size: 1.2rem;">&gt;</span> Hello World, I'm</h4>
-        <h1>REHAN RS</h1>
+        <h1 class="gradient-text">REHAN RS</h1>
         <h3><span id="typewriter"></span><span class="cursor">|</span></h3>
         <p style="color: var(--text-light); max-width: 500px; margin-bottom: 20px; font-size: 1.1rem;">
-            Aspiring Engineer & Technologist from Salem, Tamil Nadu, India.
+            **Aspiring Engineer** & **Technologist** from Salem, Tamil Nadu, India.
         </p>
         
         <div class="social-icons">
@@ -395,11 +417,11 @@
             <h2 class="section-title"><span>01.</span> About Me</h2>
             <div class="about-text">
                 <p>
-                    I am a highly driven 16-year-old high school student aspiring to become an engineer and technologist. Based in Salem, I am dedicated to bridging the gap between hardware and software.
+                    I am a highly driven **16-year-old** high school student from Salem, aspiring to become an engineer and technologist. I am dedicated to bridging the gap between hardware and software to build **functional and smart solutions**.
                 </p>
                 <br>
                 <p>
-                    My experience is diverse, ranging from **Web Design** (HTML, CSS, JS) to **Electronic Prototyping** using **Arduino** and **NodeMCU**. I also maintain a keen interest in the fundamentals of **Artificial Intelligence**. My goal is to use technical innovation to solve practical problems.
+                    My skill set is versatile, covering **Web Design** ($HTML/CSS/JS$) and **Electronic Prototyping** using the tech-bold platform **Arduino** and the **IoT-focused NodeMCU**. I also maintain a keen interest in the fundamentals of **Artificial Intelligence** ($AI$). My goal is to use technical innovation to solve practical problems.
                 </p>
             </div>
         </div>
@@ -412,21 +434,21 @@
                 <div class="skill-card">
                     <i class="fas fa-code"></i>
                     <h3>Software & Web</h3>
-                    <p>HTML5, CSS3, JavaScript</p>
+                    <p>**HTML5, CSS3, JavaScript**</p>
                     <p>Web Design & Fundamentals</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-microchip"></i>
                     <h3>Embedded Systems</h3>
-                    <p>Arduino & C++ Firmware</p>
-                    <p>NodeMCU (IoT) Integration</p>
+                    <p>**Arduino & C++** Firmware</p>
+                    <p>**NodeMCU (IoT)** Integration</p>
                 </div>
                 <div class="skill-card">
                     <i class="fas fa-robot"></i>
                     <h3>Robotics & AI</h3>
                     <p>Mechanical Prototyping</p>
-                    <p>AI/ML Conceptual Knowledge</p>
-                    <p>Python</p>
+                    <p>**AI/ML** Conceptual Knowledge</p>
+                    <p>**Python**</p>
                 </div>
             </div>
         </div>
@@ -440,37 +462,37 @@
                 <div class="project-card">
                     <h3>Smart Gas Detector</h3>
                     <div class="tech-tags">NodeMCU | MQ2 Sensor | IoT Safety</div>
-                    <p>An intelligent system designed for leak detection. It utilizes NodeMCU to alert users remotely, enhancing home safety.</p>
+                    <p>An intelligent system designed for leak detection. It utilizes **NodeMCU** to alert users remotely, enhancing home safety.</p>
                 </div>
 
                 <div class="project-card">
                     <h3>Live Water Level System</h3>
                     <div class="tech-tags">Arduino | Ultrasonic Sensor | Automation</div>
-                    <p>Automated solution providing real-time water level data. Programmed to monitor and prevent tank overflow and wastage efficiently.</p>
+                    <p>Automated solution providing real-time water level data. Programmed using **Arduino** to monitor and prevent tank overflow.</p>
                 </div>
 
                 <div class="project-card">
                     <h3>AI & ML Exploration</h3>
                     <div class="tech-tags">Python | Data Science | Conceptual AI</div>
-                    <p>Foundational projects built using Python to understand core algorithms and principles behind machine learning and decision-making processes.</p>
+                    <p>Foundational projects built using **Python** to understand core algorithms and principles behind machine learning and decision-making processes.</p>
                 </div>
                 
                 <div class="project-card">
                     <h3>Autonomous Rover (Robot)</h3>
                     <div class="tech-tags">Arduino | L298N | Robotics</div>
-                    <p>A hands-on robotics project involving chassis construction, motor control, and programming to execute autonomous movement and navigation.</p>
+                    <p>A hands-on robotics project involving chassis construction, motor control, and **Arduino programming** to execute autonomous movement.</p>
                 </div>
 
                 <div class="project-card">
                     <h3>Custom Audio Speaker Build</h3>
                     <div class="tech-tags">Electrical | Amplifier Circuit | Audio Engineering</div>
-                    <p>Full-cycle hardware project involving designing, wiring, and testing an amplifier circuit to power a custom-enclosed sound system.</p>
+                    <p>Full-cycle hardware project involving designing, wiring, and testing an **amplifier circuit** to power a custom-enclosed sound system.</p>
                 </div>
                 
                 <div class="project-card">
                     <h3>Professional Web Portfolio</h3>
                     <div class="tech-tags">HTML5 | CSS3 | JavaScript</div>
-                    <p>This responsive website, coded from scratch, serves as a high-quality demonstration of my front-end development and design capabilities.</p>
+                    <p>This responsive website, coded from scratch, is a high-quality demonstration of my **front-end development** and design capabilities.</p>
                 </div>
             </div>
         </div>
