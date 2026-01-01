@@ -74,10 +74,12 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.2rem; /* Adjusted for full name */
             font-weight: 700;
             font-family: var(--font-mono);
             color: var(--primary-color);
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .nav-links { display: flex; gap: 35px; }
@@ -382,7 +384,7 @@
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">RS.</div>
+            <div class="logo">REHAN RS</div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
@@ -504,14 +506,14 @@
             <p style="max-width: 600px; margin: 0 auto 40px auto; color: var(--text-light);">
                 I am actively seeking collaboration opportunities, college mentorship, and challenging projects. Feel free to connect!
             </p>
-            <form class="contact-form" action="MAILTO:your-email@example.com" method="post" enctype="text/plain">
+            <form class="contact-form" action="mailto:rehan28052009@gmail.com" method="post" enctype="text/plain">
                 <input type="text" class="form-control" placeholder="Your Name" name="name" required>
                 <input type="email" class="form-control" placeholder="Your Email" name="email" required>
                 <textarea class="form-control" rows="5" placeholder="Your Message" name="message" required></textarea>
                 <button type="submit" class="btn" style="margin-top: 10px;">Send Message</button>
             </form>
             <p style="margin-top: 30px; font-size: 0.95rem; color: var(--primary-color);">
-                (Note: This form uses MAILTO; configure a backend for a truly functional form.)
+                (This form will open your default email program with the message pre-filled.)
             </p>
         </div>
     </section>
