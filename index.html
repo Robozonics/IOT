@@ -3,212 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎊 Happy New Year 2026! 🎊</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <title>Rehan RS | Aspiring Engineer & Technologist</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        /* CSS STYLES */
+        /* --- CSS STYLES --- */
         :root {
-            /* Define reusable colors */
-            --bg-dark: #0A0A0A;
-            --gold-primary: #FFD700;
-            --gold-shadow: rgba(255, 215, 0, 0.7);
-            --text-light: #F0F0F0;
+            --primary-color: #38bdf8; /* Cyber Blue */
+            --bg-dark: #0f172a;       /* Deep Navy */
+            --bg-card: #1e293b;       /* Lighter Navy */
+            --text-white: #f8fafc;
+            --text-gray: #94a3b8;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            min-height: 100vh;
-            /* Use a subtle gradient for depth */
-            background: linear-gradient(135deg, #181818, var(--bg-dark)); 
-            color: var(--gold-primary); 
-            text-align: center;
-            overflow: hidden;
         }
 
-        .container {
-            padding: 20px 30px;
-            background: rgba(0, 0, 0, 0.75);
-            border-radius: 15px;
-            /* Enhanced shadow for a premium feel */
-            box-shadow: 0 0 20px var(--gold-shadow), 0 0 40px var(--gold-shadow) inset; 
-            border: 2px solid var(--gold-primary);
-            max-width: 90%; /* Ensures it doesn't spill on small phones */
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        h1 {
-            font-size: 3.5em;
-            margin-bottom: 5px;
-            letter-spacing: 5px;
-            text-shadow: 0 0 10px var(--gold-primary);
-        }
-        
-        h2 {
-            font-size: 1.4em;
-            margin-bottom: 30px;
-            color: var(--text-light);
+        .logo span { color: var(--primary-color); }
+
+        .nav-links { display: flex; gap: 30px; }
+
+        .nav-links a {
+            font-size: 0.95rem;
             font-weight: 500;
+            transition: var(--transition);
         }
 
-        #countdown {
-            display: flex;
-            gap: 15px; /* Reduced gap for mobile */
-            justify-content: center;
-            flex-wrap: wrap; /* Allows wrapping on very small screens */
-        }
+        .nav-links a:hover { color: var(--primary-color); }
 
-        .time-block {
+        .hamburger { display: none; cursor: pointer; font-size: 1.5rem; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: #1F1F1F;
-            padding: 15px 20px; /* Adjusted padding */
-            border-radius: 8px;
-            min-width: 70px; /* Ensures minimum size */
-            border-left: 3px solid var(--gold-primary); /* Small accent */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.2s;
-        }
-        
-        .time-block:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 70%);
         }
 
-        .time-block span:first-child {
-            font-size: 3.5em; /* Adjusted for better fit */
-            font-weight: 700;
-            line-height: 1.1;
-            color: var(--gold-primary);
-        }
-
-        .label {
-            font-size: 0.8em;
-            margin-top: 5px;
+        .hero h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             text-transform: uppercase;
-            color: #AAA;
-            font-weight: 600;
+            letter-spacing: 2px;
         }
 
-        /* Message style when the New Year arrives */
-        .arrived {
-            /* Text animation/color for the final message */
-            background: linear-gradient(90deg, #FFD700, #FFA500, #FFEA00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 5.5em !important;
-            animation: pulse 1s infinite alternate;
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 25px;
+            min-height: 1.6em; /* Prevents layout shift */
+        }
+
+        .social-icons { margin-bottom: 30px; }
+
+        .social-icons a {
+            font-size: 1.8rem;
+            margin: 0 15px;
+            color: var(--text-gray);
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+        }
+
+        /* --- SECTIONS COMMON --- */
+        .section { padding: 80px 20px; }
+        
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- ABOUT --- */
+        .about-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: var(--text-gray);
         }
         
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 1; text-shadow: 0 0 5px var(--gold-primary); }
-            to { transform: scale(1.05); opacity: 0.9; text-shadow: 0 0 15px var(--gold-primary), 0 0 20px #FFA500; }
+        .highlight { color: var(--primary-color); font-weight: 600; }
+
+        /* --- SKILLS --- */
+        .bg-card-section { background-color: #162032; }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        /* MEDIA QUERY FOR SMALL SCREENS (Mobile adjustments) */
-        @media (max-width: 500px) {
-            h1 {
-                font-size: 2.2em;
-                letter-spacing: 2px;
+        .skill-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+        }
+
+        .skill-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* --- PROJECTS --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            transition: var(--transition);
+            border-top: 4px solid var(--primary-color);
+        }
+
+        .project-card:hover { transform: scale(1.03); }
+
+        .tech-tags {
+            margin: 15px 0;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #0b1120;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #1e293b;
+        }
+
+        .footer-socials a {
+            font-size: 1.5rem;
+            margin: 0 15px;
+            color: var(--text-gray);
+            transition: var(--transition);
+        }
+
+        .footer-socials a:hover { color: var(--primary-color); }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero h3 { font-size: 1.2rem; }
+            
+            .hamburger { display: block; }
+            
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                height: calc(100vh - 70px);
+                background: var(--bg-dark);
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding-top: 50px;
+                transition: 0.4s;
             }
-            h2 {
-                font-size: 1.1em;
-                margin-bottom: 20px;
-            }
-            #countdown {
-                gap: 10px;
-            }
-            .time-block {
-                padding: 15px 10px;
-                min-width: 60px;
-            }
-            .time-block span:first-child {
-                font-size: 2.8em;
-            }
-            .arrived {
-                 font-size: 3.5em !important;
-            }
+
+            .nav-links.active { right: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>THE COUNTDOWN IS ON!</h1>
-        <h2 id="new-year-message">New Year's Eve 2026</h2>
-
-        <div id="countdown">
-            <div class="time-block">
-                <span id="days">00</span>
-                <span class="label">Days</span>
-            </div>
-            <div class="time-block">
-                <span id="hours">00</span>
-                <span class="label">Hours</span>
-            </div>
-            <div class="time-block">
-                <span id="minutes">00</span>
-                <span class="label">Minutes</span>
-            </div>
-            <div class="time-block">
-                <span id="seconds">00</span>
-                <span class="label">Seconds</span>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Rehan RS<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
             </div>
         </div>
-    </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <h4>Hello, I'm</h4>
+        <h1>Rehan RS</h1>
+        <h3>I am <span class="typewriter" id="typewriter"></span><span style="color:var(--primary-color)">|</span></h3>
+        <p style="color: #94a3b8; max-width: 500px; margin-bottom: 20px;">
+            16-Year-Old Technologist from Salem, India.
+        </p>
+        
+        <div class="social-icons">
+            <a href="https://instagram.com/robozonics" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/robozonics" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/robozonics" target="_blank"><i class="fab fa-twitter"></i></a>
+        </div>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-text">
+                <p>
+                    I am a 16-year-old aspiring <span class="highlight">Engineer and Technologist</span> hailing from Salem, Tamil Nadu, India.
+                </p>
+                <br>
+                <p>
+                    My passion lies at the intersection of the digital and physical worlds. I am driven by learning and building across a diverse technical spectrum. Whether it's crafting responsive websites, wiring <span class="highlight">Arduino & NodeMCU</span> circuits, or exploring <span class="highlight">AI concepts</span>, I am constantly innovating.
+                </p>
+                <br>
+                <p>Connect with my journey: <strong>@robozonics</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section bg-card-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Web Development</h3>
+                    <p>HTML5, CSS3, JavaScript</p>
+                    <p>Responsive Design</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Electronics</h3>
+                    <p>Arduino & C++</p>
+                    <p>NodeMCU (IoT)</p>
+                    <p>Circuit Design</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Emerging Tech</h3>
+                    <p>Artificial Intelligence</p>
+                    <p>Python Basics</p>
+                    <p>Problem Solving</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Smart Home IoT</h3>
+                    <div class="tech-tags">NodeMCU | C++ | Blynk App</div>
+                    <p style="color: #94a3b8;">A complete home automation system allowing users to control lights and fans via a mobile app using NodeMCU and Relay modules.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Personal Portfolio</h3>
+                    <div class="tech-tags">HTML | CSS | JavaScript</div>
+                    <p style="color: #94a3b8;">A professional, responsive portfolio website built from scratch to showcase my technical journey and connect with peers.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Line Follower Robot</h3>
+                    <div class="tech-tags">Arduino | IR Sensors</div>
+                    <p style="color: #94a3b8;">An autonomous robot chassis programmed to follow a black path on a white surface using Infrared sensors and motor drivers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="color:white; margin-bottom: 10px;">Rehan RS</h3>
+        <p style="color: #94a3b8; margin-bottom: 20px;">Aspiring Engineer. Innovator. Builder.</p>
+        <div class="footer-socials">
+            <a href="https://instagram.com/robozonics"><i class="fab fa-instagram"></i></a>
+            <a href="https://linkedin.com/in/robozonics"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/robozonics"><i class="fab fa-twitter"></i></a>
+        </div>
+        <p style="margin-top: 30px; font-size: 0.8rem; color: #64748b;">&copy; 2024 Rehan RS. All rights reserved.</p>
+    </footer>
 
     <script>
-        // JAVASCRIPT LOGIC
-        const daysEl = document.getElementById('days');
-        const hoursEl = document.getElementById('hours');
-        const minutesEl = document.getElementById('minutes');
-        const secondsEl = document.getElementById('seconds');
-        const messageEl = document.getElementById('new-year-message');
-        const countdownContainer = document.getElementById('countdown');
-
-        // Target Date: January 1st, 2026, 00:00:00 (Local Time)
-        const newYear = new Date("Jan 1, 2026 00:00:00").getTime();
-
-        function countdownTimer() {
-            const now = new Date().getTime();
-            const distance = newYear - now;
-
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result, ensuring two digits with padStart
-            daysEl.innerText = String(days).padStart(2, '0');
-            hoursEl.innerText = String(hours).padStart(2, '0');
-            minutesEl.innerText = String(minutes).padStart(2, '0');
-            secondsEl.innerText = String(seconds).padStart(2, '0');
-
-            // If the countdown is over
-            if (distance < 0) {
-                clearInterval(timerInterval);
-                
-                // Update the main message to celebrate!
-                document.querySelector('h1').innerHTML = 'HAPPY NEW YEAR!';
-                messageEl.classList.add('arrived');
-                messageEl.innerHTML = 'WELCOME 2026!';
-                
-                // Hide the countdown blocks
-                countdownContainer.style.display = 'none';
-            }
+        // 1. Mobile Menu Toggle
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
         }
 
-        // Run the countdown function immediately
-        countdownTimer();
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
 
-        // Update the count down every 1 second
-        const timerInterval = setInterval(countdownTimer, 1000);
+        // 2. Typewriter Effect
+        const roles = ["a Software Developer", "an Electronics Geek", "an AI Enthusiast", "a Student @ Salem"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === roles.length) {
+                count = 0;
+            }
+            currentText = roles[count];
+            letter = currentText.slice(0, ++index);
+
+            document.getElementById('typewriter').textContent = letter;
+
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(type, 2000); // Pause at end of word
+            } else {
+                setTimeout(type, 100); // Typing speed
+            }
+        }());
     </script>
 </body>
 </html>
