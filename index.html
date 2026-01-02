@@ -377,7 +377,7 @@
 
     <section id="home" class="hero">
         <div class="container">
-            <h4>ASPIRING ENGINEER & TECHNOLOGIST</h4>
+            <h4>ASPIRING ENGINEER & TECHNOLOGIST</h4> 
             <h1>REHAN RS</h1> 
             <h3>I am <span id="typewriter"></span><span class="cursor">|</span></h3>
             
@@ -396,7 +396,7 @@
             <h2 class="section-title"><span>01.</span><span class="hover-grad">About Me</span></h2>
             <div class="card" style="text-align: center; max-width: 850px; margin: 0 auto;">
                 <p style="font-size: 1.1rem; line-height: 1.8;">
-                    I am a highly driven **16-year-old** engineering enthusiast from Trichy. I don't just write code; I bridge the gap between software and the physical world. My expertise spans **Full-Stack Web Development**, **Aspiring Robotics Engineering**, and **IoT Systems**. I am dedicated to building **smart, scalable solutions** for tomorrow's challenges.
+                    I am a highly driven **16-year-old** engineering enthusiast from Trichy. I don't just write code; I bridge the gap between software and the physical world. My expertise spans **Full-Stack Web Development**, **Robotics Engineering**, and **IoT Systems**. I am dedicated to building **smart, scalable solutions** for tomorrow's challenges.
                 </p>
             </div>
             
@@ -631,13 +631,29 @@
             hamburger.querySelector('i').classList.add('fa-bars');
         }
 
-        // --- PASSWORD GATE LOGIC ---
-        const CORRECT_PASSWORD = "8ergaz4yhd"; 
+        // --- PASSWORD GATE LOGIC (Advanced Obfuscation) ---
+        // Base64 Encoded Password: "OGVyZ2F6NHloZA==" ("8ergaz4yhd")
+        const ENCODED_PARTS = ["OGVyZ2F6", "NHloZA=="]; 
+        
+        // Function to reconstruct and decode the password
+        function getDecodedPassword() {
+            const encoded = ENCODED_PARTS.join('');
+            try {
+                // Use a dynamic method to defeat simple static analysis in source
+                return window.atob(encoded); 
+            } catch (e) {
+                console.error("Password decoding failed.");
+                return "";
+            }
+        }
+        
         const personalContent = document.getElementById('personal-content');
         const passwordInput = document.getElementById('personal-password');
         const passwordMessage = document.getElementById('password-message');
 
         function unlockPersonalLife() {
+            const CORRECT_PASSWORD = getDecodedPassword();
+            
             if (passwordInput.value === CORRECT_PASSWORD) {
                 personalContent.classList.remove('hidden-content');
                 personalContent.classList.add('content-visible');
@@ -651,7 +667,7 @@
                 passwordMessage.textContent = "Access Granted. Archive Unlocked.";
                 passwordMessage.style.color = 'var(--primary)';
             } else {
-                passwordMessage.textContent = "Access Denied. Incorrect code mail rehan28052009@gmail.com for the CORRECT PASSWORD.";
+                passwordMessage.textContent = "Access Denied. Incorrect code.";
                 passwordMessage.style.color = 'red';
             }
         }
@@ -669,7 +685,7 @@
 
 
         // --- TYPEWRITER ---
-        const roles = ["Web Developer", "Aspiring Electronics Engineer", "Musician", "Competitive Athlete"];
+        const roles = ["Web Developer", "Electronics Engineer", "Musician", "Competitive Athlete"];
         let count = 0;
         let index = 0;
         let currentText = "";
