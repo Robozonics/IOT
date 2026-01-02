@@ -1,357 +1,397 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rehan RS | Engineer & Technologist</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
-        /* --- CSS VARIABLES --- */
+        /* --- CSS VARIABLES & THEMES --- */
         :root {
-            --primary: #00e5ff;          /* Electric Cyan */
-            --secondary: #7000ff;        /* Neon Purple */
-            --dark-bg: #050a14;          /* Almost Black */
-            --card-bg: rgba(20, 30, 50, 0.6); /* Glassy Blue */
+            /* DARK THEME */
+            --bg-color: #050a14;
+            --bg-gradient: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 20%),
+                           radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 20%);
+            --card-bg: rgba(20, 30, 50, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: #a0aec0;
-            --nav-height: 70px;
+            --primary: #00e5ff;       /* Electric Cyan */
+            --secondary: #7000ff;     /* Neon Purple */
+            --nav-bg: rgba(5, 10, 20, 0.85);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --main-gradient: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
-        /* --- RESET & BASIC SETUP --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent; /* Removes blue highlight on mobile tap */
+        /* LIGHT THEME */
+        [data-theme="light"] {
+            --bg-color: #f3f4f6;
+            --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            --card-bg: #ffffff;
+            --card-border: rgba(0, 0, 0, 0.04);
+            --text-main: #111827;     
+            --text-muted: #4b5563;    
+            --primary: #2563eb;       
+            --secondary: #0ea5e9;     
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            --main-gradient: linear-gradient(90deg, var(--primary), var(--secondary));
         }
 
+        /* --- GLOBAL RESETS & FONT POLISH --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
         html { scroll-behavior: smooth; }
-
+        
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--dark-bg);
+            background-color: var(--bg-color);
+            background-image: var(--bg-gradient);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden; /* Prevent horizontal scroll */
-            background-image: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.1) 0%, transparent 20%),
-                              radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.08) 0%, transparent 20%);
+            overflow-x: hidden;
+            transition: background 0.4s ease, color 0.4s ease;
         }
+
+        /* Font Weights */
+        h1 { font-weight: 800; }
+        h2 { font-weight: 700; }
+        h3 { font-weight: 600; }
+        b { font-weight: 700; }
+        p { font-weight: 400; }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
-        
-        /* Container for consistent alignment */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- ANIMATION KEYFRAMES --- */
+        @keyframes logo-pulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes shine {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
         }
 
-        /* --- PROFESSIONAL NAVIGATION --- */
-        .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
-            height: var(--nav-height);
-            background: rgba(5, 10, 20, 0.85);
-            backdrop-filter: blur(12px); /* Glass effect */
-            -webkit-backdrop-filter: blur(12px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-        }
-
-        .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            padding: 0 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        /* --- LOGO STYLES (NAV BAR) --- */
         .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #fff, var(--primary));
+            font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 800; letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--text-main), var(--secondary));
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: logo-pulse 3s infinite linear; 
+        }
+        
+        /* --- GRADIENT HOVER TEXT --- */
+        .hover-grad { transition: all 0.3s ease; display: inline-block; }
+        .hover-grad:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
+            transform: translateX(2px);
         }
 
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            background: var(--nav-bg); backdrop-filter: blur(12px);
+            z-index: 1000; border-bottom: 1px solid var(--card-border);
+            display: flex; align-items: center;
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 0 20px; max-width: 1200px; margin: 0 auto; }
+        .nav-actions { display: flex; align-items: center; gap: 25px; }
         .nav-links { display: flex; gap: 30px; }
-        
-        .nav-links a {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--text-muted);
+        .nav-links a { font-size: 0.9rem; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+        .icon-btn { cursor: pointer; font-size: 1.1rem; color: var(--text-main); transition: transform 0.3s, color 0.3s; }
+        .icon-btn:hover { color: var(--primary); transform: scale(1.1); }
+        .hamburger { display: none; font-size: 1.5rem; color: var(--text-main); cursor: pointer; }
+
+        /* --- HERO (INTRO PAGE) --- */
+        .hero { 
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
+            padding: 100px 20px 50px 20px; position: relative; overflow: hidden;
+        }
+        /* New Dynamic Background Layer */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            /* Creates a subtle grid or noise effect */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        .hero .container {
             position: relative;
+            z-index: 2; /* Ensure content is above the dynamic background */
         }
 
-        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-
-        /* Mobile Menu Button */
-        .hamburger {
-            display: none;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 100px 20px 50px 20px;
-        }
-
-        .hero h4 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary);
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            /* Responsive font size using clamp */
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, var(--text-main), var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero h3 {
-            font-size: clamp(1.1rem, 4vw, 1.8rem);
-            color: var(--text-muted);
-            margin-bottom: 30px;
-            height: 1.6em; /* Reserve space for typewriter */
-        }
+        .hero h4 { font-family: 'Orbitron', sans-serif; color: var(--primary); letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 15px; }
         
+        /* Dynamic Gradient for Hero H1 Title */
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5.5rem); 
+            line-height: 1.1; margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--text-main), var(--secondary));
+            background-size: 200% auto; 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            animation: logo-pulse 3s infinite linear; 
+        }
+
+        .hero h3 { font-size: clamp(1.1rem, 4vw, 1.8rem); color: var(--text-muted); margin-bottom: 40px; height: 1.6em; }
         .cursor { color: var(--primary); animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
+        /* Enhanced Button Style */
         .btn {
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-            border: none;
-            cursor: pointer;
+            padding: 14px 40px; border-radius: 50px; font-weight: 600;
+            background: var(--main-gradient);
+            color: white; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0, 229, 255, 0.5); }
+        .btn:hover { 
+            transform: translateY(-5px); /* More noticeable lift */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); 
+        }
 
-        /* --- SECTIONS --- */
-        .section { padding: 80px 0; }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 50px;
-            font-weight: 700;
-        }
-        
+        /* --- SECTIONS & CARDS --- */
+        .section { padding: 90px 0; }
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; font-weight: 700; }
         .section-title span { color: var(--primary); font-family: 'Orbitron', sans-serif; margin-right: 10px; }
 
-        /* --- CARDS (Glassmorphism) --- */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 30px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .card h3 { margin-bottom: 10px; font-size: 1.3rem; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .tech-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            color: var(--primary);
-            font-family: 'Orbitron', sans-serif;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        /* --- SKILLS --- */
-        .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-
-        /* --- CONTACT FORM --- */
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        /* --- FOOTER --- */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            margin-top: 50px;
-        }
+        /* Base Grid Layout (4 columns for desktop) */
+        .grid-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         
-        .socials { margin-bottom: 20px; }
-        .socials a { font-size: 1.5rem; margin: 0 15px; color: var(--text-muted); }
-        .socials a:hover { color: var(--primary); }
+        .card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 35px; transition: all 0.4s ease; position: relative;
+            box-shadow: var(--shadow);
+        }
+        .card:hover { transform: translateY(-7px); border-color: var(--primary); }
+        .card h3 { margin-bottom: 10px; font-size: 1.4rem; font-weight: 700; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+        
+        .tech-tag {
+            display: inline-block; font-size: 0.75rem; color: var(--primary);
+            font-family: 'Orbitron', sans-serif; margin-bottom: 15px; letter-spacing: 1px;
+            background: rgba(125,125,125,0.1); padding: 4px 10px; border-radius: 4px;
+        }
+        .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 
-        /* --- MOBILE OPTIMIZATION --- */
+        /* Hobbies Grid */
+        .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
+        .hobby-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 12px; padding: 25px; text-align: center; transition: 0.3s;
+            box-shadow: var(--shadow);
+        }
+        .hobby-card:hover { border-color: var(--secondary); transform: translateY(-3px); }
+        .hobby-card i { font-size: 2.2rem; color: var(--secondary); margin-bottom: 15px; }
+
+        /* --- FORM & FOOTER (Standard) --- */
+        .form-group { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
+        input, textarea {
+            width: 100%; padding: 18px; background: var(--bg-color);
+            border: 1px solid var(--card-border); border-radius: 10px; color: var(--text-main);
+            font-family: 'Poppins', sans-serif; font-size: 1rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .footer { text-align: center; padding: 50px 20px; border-top: 1px solid var(--card-border); margin-top: 60px; }
+        .socials { margin-bottom: 25px; }
+        .socials a { font-size: 1.6rem; margin: 0 15px; color: var(--text-muted); transition: 0.3s; }
+        .socials a:hover { color: var(--primary); transform: translateY(-3px); }
+
+        /* --- INTRO OVERLAY (for Autoplay Workaround) --- */
+        #intro-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--bg-color);
+            background-image: var(--bg-gradient);
+            z-index: 2000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        #intro-overlay h1 { font-size: 3rem; margin-bottom: 40px; }
+        #intro-overlay .btn { padding: 16px 40px; font-size: 1.1rem; }
+        .hidden { opacity: 0 !important; visibility: hidden !important; }
+
+        /* ==================================== */
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        /* ==================================== */
+        
+        /* 1. Large Tablet / Small Laptop (max-width: 1024px) */
+        @media (max-width: 1024px) {
+            .grid-layout { 
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            }
+            .nav-links { gap: 20px; }
+        }
+
+        /* 2. Standard Mobile Devices (max-width: 768px) */
         @media (max-width: 768px) {
             .hamburger { display: block; }
-            
             .nav-links {
-                position: fixed;
-                top: var(--nav-height);
-                right: -100%;
-                width: 70%; /* Not full width, cleaner on mobile */
-                height: calc(100vh - var(--nav-height));
-                background: #0b1221;
-                flex-direction: column;
-                padding: 40px;
-                transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                border-left: 1px solid rgba(255,255,255,0.1);
-                gap: 25px;
-                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+                display: none; 
+                position: fixed; top: 70px; right: -100%; width: 80%; height: calc(100vh - 70px);
+                background: var(--bg-color); flex-direction: column; padding: 50px;
+                transition: 0.4s; border-left: 1px solid var(--card-border); gap: 30px;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.3);
+            }
+            .nav-links.active { 
+                right: 0; 
+                display: flex; 
             }
 
-            .nav-links.active { right: 0; }
+            /* Adjust Hero Text Size for Mobile */
+            .hero h1 { font-size: clamp(2.2rem, 10vw, 4rem); }
+            .hero h3 { font-size: clamp(1rem, 5vw, 1.5rem); margin-bottom: 30px;}
+            .section { padding: 60px 0; }
+            .section-title { font-size: 1.8rem; margin-bottom: 40px; }
+            .about .card p { font-size: 1rem; }
+
+            .hobby-grid {
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
+        
+        /* 3. Small Mobile Devices (max-width: 600px) */
+        @media (max-width: 600px) {
+            .container { padding: 0 15px; }
             
-            .nav-links a {
-                font-size: 1.2rem;
-                display: block;
-                width: 100%;
-                padding-bottom: 10px;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
+            .grid-layout {
+                grid-template-columns: 1fr; 
+            }
+            .card { padding: 25px; }
+            
+            .hobby-grid {
+                grid-template-columns: 1fr;
             }
 
-            .hero { padding-top: 120px; /* More space for visual balance */ }
-            
-            /* Better Grid for Mobile */
-            .grid-layout { grid-template-columns: 1fr; }
-            
-            /* Prevent overflow */
-            .logo { font-size: 1.1rem; }
+            .icon-btn { font-size: 1rem; }
+            .logo { font-size: 1.2rem; }
+            .nav-actions { gap: 15px; }
         }
     </style>
 </head>
 <body>
 
+    <div id="intro-overlay">
+        <h1 class="logo" style="animation: none;">REHAN RS</h1>
+        <button class="btn" onclick="enterPortfolio()">Enter Portfolio</button>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <nav class="navbar">
         <div class="nav-content">
             <div class="logo">REHAN RS</div>
             
-            <ul class="nav-links">
-                <li><a href="#home" onclick="closeMenu()">Home</a></li>
-                <li><a href="#about" onclick="closeMenu()">About</a></li>
-                <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
-                <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
-                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
-            </ul>
-            
-            <div class="hamburger" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
+            <div class="nav-actions">
+                <ul class="nav-links">
+                    <li><a href="#home" class="hover-grad" onclick="closeMenu()">Home</a></li>
+                    <li><a href="#about" class="hover-grad" onclick="closeMenu()">About</a></li>
+                    <li><a href="#skills" class="hover-grad" onclick="closeMenu()">Skills</a></li>
+                    <li><a href="#projects" class="hover-grad" onclick="closeMenu()">Projects</a></li>
+                    <li><a href="#contact" class="hover-grad" onclick="closeMenu()">Contact</a></li>
+                </ul>
+                
+                <div class="icon-btn" onclick="toggleMusic()" title="Toggle Music">
+                    <i class="fas fa-volume-up" id="music-icon"></i>
+                </div>
+
+                <div class="icon-btn" onclick="toggleTheme()" title="Switch Theme">
+                    <i class="fas fa-sun" id="theme-icon"></i>
+                </div>
+
+                <div class="hamburger" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </div>
             </div>
         </div>
     </nav>
 
     <section id="home" class="hero">
         <div class="container">
-            <h4>ASPIRING ENGINEER & TECHNOLOGIST</h4>
-            <h1>REHAN RS</h1>
+            <h4>ENGINEER & TECHNOLOGIST</h4>
+            <h1>REHAN RS</h1> 
             <h3>I am <span id="typewriter"></span><span class="cursor">|</span></h3>
             
             <div class="socials" style="margin-bottom: 30px;">
                 <a href="https://instagram.com/robozonics" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/rehan-rs-b6406635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://twitter.com/robozonics" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/rehan-rs-b6406635b" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://x.com/robozonics" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
             </div>
             
-            <a href="#projects" class="btn">View My Work</a>
+            <a href="#projects" class="btn">Explore Work</a>
         </div>
     </section>
 
     <section id="about" class="section">
         <div class="container">
-            <h2 class="section-title"><span>01.</span>About Me</h2>
-            <div class="card" style="text-align: center; max-width: 800px; margin: 0 auto;">
+            <h2 class="section-title"><span>01.</span><span class="hover-grad">About Me</span></h2>
+            <div class="card" style="text-align: center; max-width: 850px; margin: 0 auto;">
                 <p style="font-size: 1.1rem; line-height: 1.8;">
-                    I am a highly driven <b>16-year-old</b> high school student from TRICHY, Tamil Nadu. My passion lies at the intersection of the digital and physical worlds. I don't just write code; I make things move. From <b>Web Development</b> to <b>Robotics</b> and <b>IoT</b>, I am dedicated to engineering solutions for the future.
+                    I am a highly driven **16-year-old** engineering enthusiast from Salem. I don't just write code; I bridge the gap between software and the physical world. My expertise spans **Full-Stack Web Development**, **Robotics Engineering**, and **IoT Systems**. I am dedicated to building **smart, scalable solutions** for tomorrow's challenges.
                 </p>
+            </div>
+            
+            <div style="margin-top: 60px; text-align: center;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 30px;"><span class="hover-grad">Beyond The Code</span></h3>
+                <div class="hobby-grid">
+                    <div class="hobby-card">
+                        <i class="fas fa-guitar"></i>
+                        <h4><span class="hover-grad">Guitarist</span></h4>
+                        <p style="font-size: 0.9rem; margin-top:5px;">Acoustic & Electric Rhythms</p>
+                    </div>
+                    <div class="hobby-card">
+                        <i class="fas fa-wind"></i>
+                        <h4><span class="hover-grad">Flutist</span></h4>
+                        <p style="font-size: 0.9rem; margin-top:5px;">Classical Composition</p>
+                    </div>
+                    <div class="hobby-card">
+                        <i class="fas fa-feather-alt"></i>
+                        <h4><span class="hover-grad">Badminton</span></h4>
+                        <p style="font-size: 0.9rem; margin-top:5px;">Competitive Athlete</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="skills" class="section">
         <div class="container">
-            <h2 class="section-title"><span>02.</span>My Arsenal</h2>
+            <h2 class="section-title"><span>02.</span><span class="hover-grad">Technical Arsenal</span></h2>
             <div class="grid-layout">
                 <div class="card" style="text-align: center;">
                     <i class="fas fa-code skill-icon"></i>
-                    <h3>Web Dev</h3>
-                    <p>HTML5, CSS3, JavaScript</p>
-                    <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">Responsive UI/UX</p>
+                    <h3><span class="hover-grad">Web Development</span></h3>
+                    <p>Building **responsive, high-performance** web interfaces using **HTML5, Modern CSS3, and JavaScript (ES6+)**.</p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <i class="fas fa-microchip skill-icon"></i>
-                    <h3>Electronics</h3>
-                    <p>Arduino & C++</p>
-                    <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">NodeMCU IoT & Circuitry</p>
+                    <h3><span class="hover-grad">Embedded Systems</span></h3>
+                    <p>Programming **Arduino & NodeMCU** microcontrollers to control sensors, actuators, and **complex circuits**.</p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <i class="fas fa-brain skill-icon"></i>
-                    <h3>Future Tech</h3>
-                    <p>Artificial Intelligence</p>
-                    <p style="margin-top: 5px; font-size: 0.8rem; opacity: 0.7;">Python & ML Concepts</p>
+                    <h3><span class="hover-grad">AI & Python</span></h3>
+                    <p>Leveraging **Python** for data processing and exploring **foundational Machine Learning** algorithms and concepts.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <i class="fas fa-robot skill-icon"></i>
+                    <h3><span class="hover-grad">Mechanical Design</span></h3>
+                    <p>Proficient in **CAD tools** for designing and simulating robotic systems and enclosures.</p>
                 </div>
             </div>
         </div>
@@ -359,62 +399,43 @@
 
     <section id="projects" class="section">
         <div class="container">
-            <h2 class="section-title"><span>03.</span>Featured Projects</h2>
+            <h2 class="section-title"><span>03.</span><span class="hover-grad">Featured Projects</span></h2>
             <div class="grid-layout">
-                
                 <div class="card">
                     <span class="tech-tag">IOT & SAFETY</span>
-                    <h3>Smart Gas Detector</h3>
-                    <p>An intelligent safety system using <b>NodeMCU & MQ2 Sensors</b>. It detects gas leaks and triggers alerts to prevent accidents.</p>
+                    <h3><span class="hover-grad">Smart Gas Detector</span></h3>
+                    <p>An IoT-enabled safety device leveraging **NodeMCU & MQ2 Sensors** to detect **hazardous leaks** and trigger real-time alerts.</p>
                 </div>
-
                 <div class="card">
                     <span class="tech-tag">AUTOMATION</span>
-                    <h3>Live Water Monitor</h3>
-                    <p>Real-time water level tracking using <b>Ultrasonic Sensors</b>. Prevents tank overflow and saves water resources automatically.</p>
+                    <h3><span class="hover-grad">Live Water Monitor</span></h3>
+                    <p>Automated **resource management** system using **Ultrasonic Technology** to track water levels and prevent tank overflow.</p>
                 </div>
-
                 <div class="card">
                     <span class="tech-tag">ROBOTICS</span>
-                    <h3>Autonomous Rover</h3>
-                    <p>A self-navigating robot chassis powered by <b>Arduino</b> and L298N motor drivers. Capable of obstacle avoidance.</p>
+                    <h3><span class="hover-grad">Autonomous Rover</span></h3>
+                    <p>A **self-navigating robotic unit** powered by **Arduino & L298N Drivers**, capable of mapping terrain and avoiding obstacles.</p>
                 </div>
-
                 <div class="card">
                     <span class="tech-tag">AUDIO ENG</span>
-                    <h3>Custom Speaker</h3>
-                    <p>A DIY audio project involving the design and assembly of an <b>Amplifier Circuit</b> and a custom acoustic enclosure.</p>
+                    <h3><span class="hover-grad">Custom Audio Unit</span></h3>
+                    <p>End-to-end hardware build involving the soldering of a **high-fidelity Amplifier Circuit** and acoustic enclosure design.</p>
                 </div>
-
-                <div class="card">
-                    <span class="tech-tag">WEB DEV</span>
-                    <h3>Pro Portfolio</h3>
-                    <p>This responsive website. Built from scratch with <b>HTML/CSS/JS</b> to showcase professional design capabilities.</p>
-                </div>
-
-                <div class="card">
-                    <span class="tech-tag">AI RESEARCH</span>
-                    <h3>AI & ML Concepts</h3>
-                    <p>Exploratory work in <b>Python</b> to understand the core algorithms behind Machine Learning and Artificial Intelligence.</p>
-                </div>
-
             </div>
         </div>
     </section>
 
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title"><span>04.</span>Get In Touch</h2>
-            
+            <h2 class="section-title"><span>04.</span><span class="hover-grad">Get In Touch</span></h2>
             <form class="form-group" action="mailto:rehan28052009@gmail.com" method="post" enctype="text/plain">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="How can we collaborate?" required></textarea>
+                <textarea name="message" rows="5" placeholder="Let's collaborate on something amazing." required></textarea>
                 <button type="submit" class="btn" style="width: 100%;">Send Message</button>
             </form>
-            
             <p style="text-align: center; margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);">
-                (Clicking Send will open your email app)
+                (This will open your default email client)
             </p>
         </div>
     </section>
@@ -422,20 +443,77 @@
     <footer class="footer">
         <div class="socials">
             <a href="https://instagram.com/robozonics"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/rehan-rs-b6406635b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin"></i></a>
-            <a href="https://twitter.com/robozonics"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/rehan-rs-b6406635b" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://x.com/robozonics" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
-        <p style="font-size: 0.9rem; color: var(--text-muted);">Designed & Built by <b>Rehan RS</b> &copy; 2026</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">Designed & Engineered by **Rehan RS** &copy; 2026</p>
     </footer>
 
     <script>
-        // Mobile Menu Logic
+        // --- MUSIC START LOGIC (Autoplay Workaround) ---
+        const audio = document.getElementById('bg-music');
+        const overlay = document.getElementById('intro-overlay');
+        const musicIcon = document.getElementById('music-icon');
+
+        // Initial icon state (Volume up, as audio will start unmuted upon user click)
+        musicIcon.classList.remove('fa-volume-off');
+        musicIcon.classList.add('fa-volume-up');
+
+        function enterPortfolio() {
+            // 1. Start Music (User interaction allows unmuted play)
+            audio.play().catch(e => console.error("Audio play failed:", e));
+            
+            // 2. Hide Overlay
+            overlay.classList.add('hidden');
+        }
+
+        function toggleMusic() {
+            if (audio.paused || audio.muted) {
+                // UNMUTE and PLAY
+                audio.muted = false;
+                audio.play().catch(e => console.error("Audio play failed, user interaction required:", e));
+                musicIcon.classList.remove('fa-volume-off');
+                musicIcon.classList.add('fa-volume-up');
+            } else {
+                // MUTE or PAUSE
+                audio.muted = true; 
+                musicIcon.classList.remove('fa-volume-up');
+                musicIcon.classList.add('fa-volume-off');
+            }
+        }
+        
+        // --- THEME LOGIC ---
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        html.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        function toggleTheme() {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            if (theme === 'light') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        // --- MENU LOGIC ---
         const navLinks = document.querySelector('.nav-links');
         const hamburger = document.querySelector('.hamburger');
 
         function toggleMenu() {
             navLinks.classList.toggle('active');
-            // Change icon
             const icon = hamburger.querySelector('i');
             if (navLinks.classList.contains('active')) {
                 icon.classList.remove('fa-bars');
@@ -452,8 +530,8 @@
             hamburger.querySelector('i').classList.add('fa-bars');
         }
 
-        // Typewriter Logic
-        const roles = ["Web Developer", "Electronics Geek", "AI Enthusiast", "Student @ TRICHY"];
+        // --- TYPEWRITER ---
+        const roles = ["Web Developer", "Electronics Engineer", "Musician", "Competitive Athlete"];
         let count = 0;
         let index = 0;
         let currentText = "";
@@ -463,7 +541,6 @@
             if (count === roles.length) count = 0;
             currentText = roles[count];
             letter = currentText.slice(0, ++index);
-            
             document.getElementById('typewriter').textContent = letter;
             
             if (letter.length === currentText.length) {
