@@ -14,7 +14,7 @@
             /* DARK THEME */
             --bg-color: #050a14;
             --bg-gradient: radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 20%),
-                           radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 20%);
+                            radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 20%);
             --card-bg: rgba(20, 30, 50, 0.6);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
@@ -112,28 +112,18 @@
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
             padding: 100px 20px 50px 20px; position: relative; overflow: hidden;
         }
-        /* Dynamic Background Layer */
         .hero::before {
             content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            /* Creates a subtle grid or noise effect */
+            position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1;
             background-image: 
                 linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
-            opacity: 0.5;
+            background-size: 40px 40px; pointer-events: none; opacity: 0.5;
         }
-        .hero .container {
-            position: relative;
-            z-index: 2; /* Ensure content is above the dynamic background */
-        }
+        .hero .container { position: relative; z-index: 2; }
 
         .hero h4 { font-family: 'Orbitron', sans-serif; color: var(--primary); letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 15px; }
         
-        /* Dynamic Gradient for Hero H1 Title */
         .hero h1 {
             font-size: clamp(2.5rem, 8vw, 5.5rem); 
             line-height: 1.1; margin-bottom: 20px;
@@ -148,24 +138,19 @@
         .cursor { color: var(--primary); animation: blink 1s infinite; }
         @keyframes blink { 50% { opacity: 0; } }
 
-        /* Enhanced Button Style */
         .btn {
             padding: 14px 40px; border-radius: 50px; font-weight: 600;
             background: var(--main-gradient);
-            color: white; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+            color: white; box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
             border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-        .btn:hover { 
-            transform: translateY(-5px); /* More noticeable lift */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); 
-        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4); }
 
         /* --- SECTIONS & CARDS --- */
         .section { padding: 90px 0; }
         .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 60px; font-weight: 700; }
         .section-title span { color: var(--primary); font-family: 'Orbitron', sans-serif; margin-right: 10px; }
 
-        /* Base Grid Layout (4 columns for desktop) */
         .grid-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
         
         .card {
@@ -184,7 +169,6 @@
         }
         .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
 
-        /* Hobbies Grid */
         .hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 50px; }
         .hobby-card {
             background: var(--card-bg); border: 1px solid var(--card-border);
@@ -199,12 +183,10 @@
         .password-gate input { margin-bottom: 15px; text-align: center; }
         .password-gate .btn { padding: 10px 25px; width: auto; }
         .password-gate-message { color: var(--primary); margin-top: 15px; }
-
-        /* Hidden Content Default State (Only shows the card structure before content is injected) */
         .hidden-content { min-height: 150px; }
-        /* Show the main content only when gate is passed */
         .content-visible { display: block; }
         
+        /* Personal Card Style */
         .personal-card {
             background: var(--card-bg); 
             border: 2px solid var(--secondary);
@@ -213,44 +195,40 @@
             margin: 40px auto; 
             text-align: left; 
             max-width: 900px;
-            box-shadow: 0 0 25px rgba(112, 0, 255, 0.3); /* Purple Glow */
+            box-shadow: 0 0 25px rgba(112, 0, 255, 0.3);
         }
         .personal-card h3 {
             color: var(--primary);
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 20px;
+            margin-top: 30px;
             font-family: 'Orbitron', sans-serif;
             border-bottom: 1px solid var(--card-border);
             padding-bottom: 10px;
         }
+        .personal-card h3:first-child { margin-top: 0; }
         .personal-card p {
             font-size: 1.05rem; 
             line-height: 1.9;
             color: var(--text-main);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
-        .personal-card strong {
-            color: var(--secondary);
-            font-weight: 700;
-        }
+        .personal-card strong, .personal-card b { color: var(--secondary); font-weight: 700; }
+        .personal-card i { color: var(--text-muted); }
         
-        /* New Style for Clickable Text Reveal */
+        /* Clickable Text Reveal */
         .reveal-text {
             color: var(--primary);
             font-weight: 700;
             cursor: pointer;
             transition: color 0.3s, border-bottom 0.3s;
-            border-bottom: 1px dashed var(--primary); /* subtle hint that it's clickable */
+            border-bottom: 1px dashed var(--primary);
             display: inline-block;
             padding-bottom: 2px;
         }
-        .reveal-text:hover {
-            color: var(--secondary);
-            border-bottom: 1px dashed var(--secondary);
-        }
+        .reveal-text:hover { color: var(--secondary); border-bottom: 1px dashed var(--secondary); }
 
-
-        /* --- FORM & FOOTER (Standard) --- */
+        /* --- FORM & FOOTER --- */
         .form-group { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
         input, textarea {
             width: 100%; padding: 18px; background: var(--bg-color);
@@ -262,7 +240,7 @@
         .socials a { font-size: 1.6rem; margin: 0 15px; color: var(--text-muted); transition: 0.3s; }
         .socials a:hover { color: var(--primary); transform: translateY(-3px); }
 
-        /* --- INTRO OVERLAY (for Autoplay Workaround) --- */
+        /* --- INTRO OVERLAY --- */
         #intro-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--bg-color);
@@ -275,19 +253,11 @@
         #intro-overlay .btn { padding: 16px 40px; font-size: 1.1rem; }
         .hidden { opacity: 0 !important; visibility: hidden !important; }
 
-        /* ==================================== */
         /* --- RESPONSIVE MEDIA QUERIES --- */
-        /* ==================================== */
-        
-        /* 1. Large Tablet / Small Laptop (max-width: 1024px) */
         @media (max-width: 1024px) {
-            .grid-layout { 
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            }
+            .grid-layout { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
             .nav-links { gap: 20px; }
         }
-
-        /* 2. Standard Mobile Devices (max-width: 768px) */
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-links {
@@ -297,37 +267,19 @@
                 transition: 0.4s; border-left: 1px solid var(--card-border); gap: 30px;
                 box-shadow: -10px 0 30px rgba(0,0,0,0.3);
             }
-            .nav-links.active { 
-                right: 0; 
-                display: flex; 
-            }
-
-            /* Adjust Hero Text Size for Mobile */
+            .nav-links.active { right: 0; display: flex; }
             .hero h1 { font-size: clamp(2.2rem, 10vw, 4rem); }
             .hero h3 { font-size: clamp(1rem, 5vw, 1.5rem); margin-bottom: 30px;}
             .section { padding: 60px 0; }
             .section-title { font-size: 1.8rem; margin-bottom: 40px; }
-            .about .card p { font-size: 1rem; }
             .personal-card { padding: 25px; }
-
-            .hobby-grid {
-                grid-template-columns: repeat(2, 1fr); 
-            }
+            .hobby-grid { grid-template-columns: repeat(2, 1fr); }
         }
-        
-        /* 3. Small Mobile Devices (max-width: 600px) */
         @media (max-width: 600px) {
             .container { padding: 0 15px; }
-            
-            .grid-layout {
-                grid-template-columns: 1fr; 
-            }
+            .grid-layout { grid-template-columns: 1fr; }
             .card { padding: 25px; }
-            
-            .hobby-grid {
-                grid-template-columns: 1fr;
-            }
-
+            .hobby-grid { grid-template-columns: 1fr; }
             .icon-btn { font-size: 1rem; }
             .logo { font-size: 1.2rem; }
             .nav-actions { gap: 15px; }
@@ -532,7 +484,6 @@
         function enterPortfolio() {
             // 1. Start Music (User interaction allows unmuted play)
             audio.play().catch(e => console.error("Audio play failed:", e));
-            
             // 2. Hide Overlay
             overlay.classList.add('hidden');
         }
@@ -602,24 +553,24 @@
         
         // --- PASSWORD & PERSONAL CONTENT LOGIC (Max Obfuscation) ---
 
-        // 1. Obfuscated Password Parts ("8ergaz4yhd" Base64 split)
+        // 1. Obfuscated Password Parts (Base64 split: "8ergaz4yhd")
         const ENCODED_PARTS = ["OGVyZ2F6", "NHloZA=="]; 
         
         // Function to reconstruct and decode the password
         function getDecodedPassword() {
             const encoded = ENCODED_PARTS.join('');
             try {
-                // Decodes the password in runtime
                 return window.atob(encoded); 
             } catch (e) {
                 console.error("Password decoding failed.");
                 return "";
             }
         }
-
-        // 2. Obfuscated Personal Life Content (Entire HTML Block, Base64 Encoded)
-        // This makes the section unreadable in source code
-        const ENCODED_PERSONAL_HTML = "PGRpdiBjbGFzcz0icGVyc29uYWwtY2FyZCI+CiAgICAgICAgICAgICAgICAgIDxoMz5UaGUgTGlmZSBCZWhpbmQgdGhlIENvZGU6IEEgQ2hhb3RpYywgWWV0IERldGVybWluZWQsIFRpbWVsaW5lPC9oMz4KICAgICAgICAgICAgICAgICAgPHAKICAgICAgICAgICAgICAgICAgICAgIFNvLCB5b3UndmUgYnJlYWNoZWQgdGhlIGZpcmV3YWxsLiBXZWxjb21lIHRvIHRoZSB1bmN1dCB2ZXJzaW9uLiBNeSBzdG9yeSBzdGFydHMgaW4gPGI+U2FsZW08L2I+IHdoZXJlIEkgd2FzIGJvcm4gb24gPGI+TWF5IDI4LCAyMDA5PC9iPi4gSG93ZXZlciwgbXkgZm91bmRhdGlvbmFsIHllYXJzIHdlcmUgc3BlbnQgYWJzb3JiaW5nIHRoZSBlbGVjdHJpYyBlbmVyZ3kgYW5kIGNoYW9zIG9mIDxiPkNoZW5uYWk8L2I+LiBJIHNwZW50IG15IGZvdW5kYXRpb24geWVhcnMsIHJpZ2h0IHVwIHRpbGwgdGhlIDh0aCBzdGFuZGFyZCwgYXQgPGI+TC5NLiBEYWRoYSBTZW5pb3IgU2Vjb25kYXJ5IFNjaG9vbDwvYj4uIFRoYXQgd2hvbGUgc3RyZXRjaCBpbmNsdWRlcyB0aGUgZ3JlYXQgZ2xvYmFsIHBhdXNl4oCUQ09WSUTigJTnd2hpY2gsIGZvciBtZSwgbWVhbnQgNnRoIGFuZCA3dGggZ3JhZGUgd2VyZSBjb25kdWN0ZWQgdmlhIG15IGxhcHRvcCBzY3JlZW4uIEhvbmVzdGx5LCB0aG9zZSB0d28geWVhcnMgb2YgbWFuZGF0b3J5IG9ubGluZSBsZWFybmluZyBwcm9iYWJseSBkaWQgbW9yZSBmb3IgbXkgc2VsZi10YXVnaHQgdGVjaCBza2lsbHMgdGhhbiBhbnkgdGV4dGJvb2sgZXZlciBjb3VsZCEKICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgICA8cD4KICAgICAgICAgICAgICAgICAgICAgIFRoZSBiaWcgc2Nob29sIGNoYW5nZSBjYW1lIGluIHRoZSA5dGggc3RhbmRhcmQgd2hlbiB0aGUgZmFtaWx5IGZpbmFsbHkgbW92ZWQsIGFuZCBJIGVucm9sbGVkIGluIDxiPkFscGhhIFdpc2RvbSBWaWRoeWFzaHJhbTwvYj4gaGVyZSBpbiA8Yj5UcmljaHk8L2I+LiBUaGUgc2hpZnRpbmcgbGFuZHNjYXBlIGZyb20gQ2hlbm5haSB0byBUcmljaHkgd2FzIGphcnJpbmcsIGJ1dCBpdCBmb3JjZWQgbWUgdG8gYWRhcHQgYW5kIGZvY3Vz4oDagXRhIG5lY2Vzc2FyeSBwcm9jZXNzIGZvciBhbnkgaGlnaC1mdW5jdGlvbmGluZyBzeXN0ZW0uCiAgICAgICAgICAgICAgICAgIDwvcD4KICAgICAgICAgICAgICAgICAgPGgzPlRoZSBDb21wZXRpdGlvbjogV2hlcmUgSSBMZWFybmVkIFRoYXQgS2FybWEgUnVucyBvbiBGaWJlciBPcHRpYzwvaDM+CiAgICAgICAgICAgICAgICAgIDxwPgogICAgICAgICAgICAgICAgICAgICAgVGhlIHBlYWsgb2YgbXkgZWFybHkgY29tcGV0aXRpdmUgY2FyZWVyIGludm9sdmVkIGEgem9uYWwgY29tcGV0aXRpb24gYXQgUlNLIFNjaG9vbCwgYW5kIG9oLCB0aGUgc2hhbWUuIE15IHNjaG9vbCBoYWQgdHdvIHByb2plY3RzOiBtaW5lLCBhIHRydWx5IGNvbXBsZXggc3lzdGVtLCBhbmQgYSBzaW1wbGVyIG9uZSBieSBhIDEwdGgtZ3JhZGUgdGVhbS4gTXkgY29tcGV0aXRpdmUgc3Bpcml0IGRlY2lkZWQgdG8gZ28gcm9ndWUuIEkgbG9va2VkIGF0IHRoZSBwYXRjaHkgcHJlc2VudGF0aW9uIGZhY2lsaXRpZXMgYW5kIHRob3VnaHQsICJXaGF0IGlmIDxiPm5vYm9keTwvYj4gY291bGQgcHJlc2VudCBkaWdpdGFsbHk/IiBTbywgSSBkaWQgaXQuIEkgPGI+aGFja2VkIHRoZSBzY2hvb2wncyBXaS1GaSBuZXR3b3JrPC9iPiwgaW50ZW5kaW5nIHRvIGNyYXNoIHRoZSBkaXNwbGF5cyBvZiBldmVyeSBjb21wZXRpdG9yLgoKICAgICAgICAgICAgICAgICAgICAgIEluIG15IGh1YnJpcywgSSBvbmx5IHNwYXJlZCB0aGUgV2ktRmkgZm9yIHRoZSAxMHRoLWdyYWRlIGdpcmwncyB0ZWFtLCBtb3N0bHkgYmVjYXVzZSB0aGVpciBwcm9qZWN0IHdhcyBzaW1wbGVyIGFuZCB0aGV5IHdlcmUgZnJvbSBhIGp1bmlvciBncmFkZS4gVGhleSBjb25uZWN0ZWQgZmxhd2xlc3NseS4gSSwgdGhlIGJyaWxsaWFudCBuZXR3b3JrIHNhYm90ZXVyLCB3YXRjaGVkIGluIHJlYWwtdGltZSBhcyA8Yj5teSBvd24gcHJvamVjdCBmYWlsZWQgdG8gZGlzcGxheTwvYj4gKGR1ZSB0byBteSBzZWxmLWltcG9zZWQgYmxhY2tvdXQpIGFuZCB0aGUgMTB0aC1ncmFkZSB0ZWFtIGVhc2lseSA8Yj5zY29vcGVkIHVwIHRoZSBwcml6ZTwvYj4uIEl0IHdhcyBhIGNpbmVtYXRpYyBtb21lbnQgb2YgcHVyZSBkaWdpdGFsIGthcm1hLiBJdCB0YXVnaHQgbWUgdGhhdCBzb21ldGltZXMsIHRoZSBtb3N0IHNvcGhpc3RpY2F0ZWQgYWRhcHRhdGlvbiBpcyBzaW1wbHkgc2hvd2luZyB1cCB3aXRoIGEgd29ya2luZyBwcmVzZW50YXRpb27igJlhbmQgdGhhdCB0aGUgdW5pdmVyc2UgZmF2b3JzIHRoZSBldGhpY2FsbHkgdW5jb21wbGljYXRlZC4KICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgICA8aDM+MTF0aCBHcmFkZTogVGhlIFNvY2lhbCBDcnVjaWJsZTwvaDM+CiAgICAgICAgICAgICAgICAgIDxwPgogICAgICAgICAgICAgICAgICAgICAgQW5kIHRoYXQgYnJpbmdzIHVzIHRvIHRoZSA8Yj4xMXRoIHN0YW5kYXJkPC9iPiwgd2hpY2ggaGFzIGZlbHQgbGVzcyBsaWtlIGEgc3RlcHBpbmcgc3RvbmUgYW5kIG1vcmUgbGlrZSBhIHRpZ2h0cm9wZSB3YWxrIG92ZXIgYSB2b2xjYW5vLiBJdOkezKhzIGJlZW4gbXkgbW9zdCBkZWZpbmluZyBhbmQgY29udHJvdmVyc2lhbCB5ZWFyLiBUaGUgaHVtYW4gZWxlbWVudCBnb3QgY29tcGxpY2F0ZWQ6IEkgd2FzIGluY3JlZGlibHkgPHNwYW4gb25jbGljay0iYWJjZDAxXzEwMSgpIiBpZD0iZGlzdHJhY3Rpb24tdGV4dCIgY2xhc3M9InJldmVhbC10ZXh0Ij5kaXN0cmFjdGVkIGJ5IGEgZ2lybDwvc3Bhbj4sIHdoaWNoIGlzIGFwcGFyZW50bHkgYSBwcmVyZXF1aXNpdGUgZm9yIHRlZW5hZ2UgZXhpc3RlbmNlLiBPbiB0b3Agb2YgdGhhdCwgYmVpbmcgYSBraWQgd2l0aCBzdHJvbmcgYmVsaWVmcyBhbmQgYSBsb3VkIHZvaWNlIG1lYW50IEkgZmFjZWQgbXkgZmFpciBzaGFyZSBvZiBwZXR0eSBiPmxseWluZzwvYj4gZm9yIGRhcmluZyB0byBoYXZlIGFuIG9waW5pb24uCiAgICAgICAgICAgICAgICAgIDwvcD4KICAgICAgICAgICAgICAgICAgPHA+CiAgICAgICAgICAgICAgICAgICAgICBCdXQgaGVyZSdzIHRoZSBraWNrZXI6IEkgZGlkbid0IGxldCBhbnkgb2YgaXQgc2xpZGUuIEkgYmF0dGxlZCB0aHJvdWdoIHRoZSBzb2NpYWwgbm9uc2Vuc2UsIGlnbm9yZWQgdGhlIGRyYW1hLCBhbmQgbWFuYWdlZCB0byBzZWN1cmUgc29tZSBnZW51aW5lbHkgPGI+Z3JlYXQgbWFya3M8L2I+LiBJIG1pZ2h0IGJlIGEgbGl0dGxlIHJvdWdoIGFyb3VuZCB0aGUgZWRnZXMsIG9jY2FzaW9uYWxseSB0b28gYm9sZCwgYW5kIHBlcnBldHVhbGx5IHNsZWVwLWRlcHJpdmVkLCBidXQgSSBoYXZlIGVhcm5lZCBteSBuYW1lIGluIHRoYXQgY2xhc3Nyb29tLiBUaGlzIHllYXIgaXMgc3RpbGwgb25nb2luZywgYW5kIEkgZnVsbHkgaW50ZW5kIHRvIGVuZCBpdCB3aXRoIGEgc3VjY2Vzc3NmdWwgYWNhZGVtaWMgY29tcGlsYXRpb24sIGhvcGVmdWxseSB3aXRob3V0IGFueSBmdXJ0aGVyIG5ldHdvcmsgYnJlYWNoZXMuIDxiPlRoZSBqb3VybmV5IGNvbnRpbnVlcy4uLjwvaT4KICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgPC9kaXY+";
+        
+        // 2. Obfuscated Personal Life Content (The 500-word Witty Story, Base64 Encoded)
+        // This long string contains your story about Salem, Chennai, Dadha School, Alpha Wisdom,
+        // The RSK Wifi Hacking, the Karma Boomerang, and Nithya Sree.
+        const ENCODED_PERSONAL_HTML = "PGRpdiBjbGFzcz0icGVyc29uYWwtY2FyZCI+CiAgICA8aDM+VGhlIE9yaWdpbiAmIFRoZSBTZXR1cDwvaDM+CiAgICA8cD4KICAgICAgICBNeSBqb3VybmV5IGJlZ2FuIG9uIDxiPk1heSAyOCwgMjAwOTwvYj4sIGluIDxiPlNhbGVtPC9iPuKAlGEgcGxhY2UgZmFtb3VzIGZvciBtYW5nb2VzIGFuZCBzY29yY2hpbmcgaGVhdCwgd2hpY2ggcGVyaGFwcyBleHBsYWlucyB3aHkgbXkgQ1BVIHJ1bnMgaG90IHRvIHRoaXMgZGF5LiBIb3dldmVyLCBJIGRpZG4ndCBzdGF5IHRoZXJlIGxvbmcgZW5vdWdoIHRvIGN1bHRpdmF0ZSBhIGxvdmUgZm9yIGFncmljdWx0dXJlLiBNeSBvcGVyYXRpbmcgc3lzdGVtIHdhcyB0cnVseSBpbnN0YWxsZWQgYW5kIHVwZGF0ZWQgaW4gdGhlIGNoYW90aWMsIGJ1c3RsaW5nIHN0cmVldHMgb2YgPGI+Q2hlbm5haTwvYj4uCiAgICA8L3A+CiAgICA8cD4KICAgICAgICBJIHNwZW50IG15IGZvdW5kYXRpb25hbCB5ZWFycyBhdCA8Yj5MLk0uIERhZGhhIFNlbmlvciBTZWNvbmRhcnkgU2Nob29sPC9iPi4gVGhpcyB3YXMgdGhlIHR1dG9yaWFsIGxldmVsIG9mIG15IGxpZmUsIGJ1dCB0aGUgZGlmZmljdWx0eSBzZXR0aW5nIHNwaWtlZCB3aGVuIEkgaGl0IHRoZSA2dGggYW5kIDd0aCBncmFkZXMuIFdoeT8gQmVjYXVzZSB0aGUgd29ybGQgc2h1dCBkb3duLiBUaGUgPGk+Q09WSUQtMTkgbG9ja2Rvd25zPC9pPiBoaXQsIGFuZCB3aGlsZSBvdGhlciBraWRzIHdlcmUgbGVhcm5pbmcgaG93IHRvIGJha2UgYmFuYW5hIGJyZWFkIG9yIGRvIFRpa1RvayBkYW5jZXMsIEkgd2FzIGVzc2VudGlhbGx5IGxpdmluZyBpbnNpZGUgbXkgbGFwdG9wLiBUaG9zZSB0d28geWVhcnMgb2YgaXNvbGF0aW9uIHdlcmVuJ3QgImxvc3QiIHllYXJzOyB0aGV5IHdlcmUgYW4gaW50ZW5zZSwgc2VsZi1kaXJlY3RlZCBib290IGNhbXAuIEkgZGlkbid0IGp1c3QgYXR0ZW5kIG9ubGluZSBjbGFzc2VzOyBJIGRpc3NlY3RlZCB0aGUgbWFjaGluZXMgSSB3YXMgdGFraW5nIHRoZW0gb24uCiAgICA8L3A+CgogICAgPGgzPlRoZSBNaWdyYXRpb24gJiBUaGUgSGlnaCBTY29yZTwvaDM+CiAgICA8cD4KICAgICAgICBCeSB0aGUgdGltZSBJIHJlYWNoZWQgdGhlIDh0aCBzdGFuZGFyZCwgdGhlIGZhbWlseSBzY3JpcHQgY2FsbGVkIGZvciBhIGxvY2F0aW9uIGNoYW5nZS4gV2UgbW92ZWQgdG8gPGI+VHJpY2h5PC9iPiwgYW5kIEkgZW5yb2xsZWQgaW4gPGI+QWxwaGEgV2lzZG9tIFZpZGh5YXNocmFtPC9iPiBzdGFydGluZyBpbiB0aGUgOXRoIGdyYWRlLiBCZWluZyB0aGUgIm5ldyBraWQiIGlzIHVzdWFsbHkgYSBzb2NpYWwgZGVhdGggc2VudGVuY2UsIGJ1dCBJIGRlY2lkZWQgdG8gY29tcGVuc2F0ZSBieSBiZWluZyB0aGUgInNtYXJ0IGtpZC4iIEkgdGhyZXcgbXlzZWxmIGludG8gY29tcGV0aXRpb25zLCB3aW5uaW5nIHByaXplcyBhbmQgZXN0YWJsaXNoaW5nIG15IHRlcnJpdG9yeS4gSSBjYXBwZWQgb2ZmIG15IDEwdGgtZ3JhZGUgZXJhIHdpdGggYSBzb2xpZCA8Yj45MiU8L2I+IG9uIHRoZSBib2FyZHMuIEkgZmVsdCBpbnZpbmNpYmxlLiBNeSBjb2RlIHdhcyBjbGVhbiwgbXkgZ3JhZGVzIHdlcmUgaGlnaCwgYW5kIG15IGVnbyB3YXMgYXJndWFibHkgaW5mbGF0aW5nIGZhc3RlciB0aGFuIGEgbGl0aGl1bSBiYXR0ZXJ5IGluIHRoZSBzdW4uCiAgICA8L3A+CgogICAgPGgzPlRoZSBWaWxsYWluIEFyYzogVGhlIFJTSyBJbmNpZGVudDwvaDM+CiAgICA8cD4KICAgICAgICBUaGVuIGNhbWUgPGI+MTF0aCBHcmFkZTwvYj4uIElmIG15IGxpZmUgd2VyZSBhIG1vdmllLCB0aGlzIHdvdWxkIGJlIHRoZSBhY3Qgd2hlcmUgdGhlIHByb3RhZ29uaXN0IGJyaWVmbHkgYmVjb21lcyB0aGUgdmlsbGFpbi4KICAgICAgICA8YnI+PGJyPgogICAgICAgIEkgd2FzIHNlbGVjdGVkIGZvciBhIG1ham9yIGNvbXBldGl0aW9uIGF0IDxiPlJTSyBTY2hvb2w8L2I+LiBUaGVyZSB3ZXJlIHR3byB0ZWFtcyBmcm9tIG15IHNjaG9vbDogbXkgdGVhbSwgYW5kIGEgdGVhbSBvZiAxMHRoLWdyYWRlIGdpcmxzLiBXZSBhcnJpdmVkIGF0IHRoZSB2ZW51ZSwgYW5kIG15IGNvbXBldGl0aXZlIHNwaXJpdCBkZWNpZGVkIHRvIHRha2UgYSBkYXJrIHR1cm4uIEkgbG9va2VkIGF0IHRoZSBjb21wZXRpdGlvbiBhbmQgdGhvdWdodCwgPGk+IldoeSBwbGF5IGZhaXIgd2hlbiB5b3UgY2FuIHBsYXkgcm9vdCBhY2Nlc3M/IjwvaT4KICAgIDwvcD4KICAgIDxwPgogICAgICAgIEluIGEgbW9tZW50IG9mIHB1cmUsIGNpbmVtYXRpYyBodWJyaXMsIEkgZGVjaWRlZCB0byA8Yj5oYWNrIHRoZSB2ZW51ZeKAmXMgV2ktRmkgbmV0d29yazwvYj4uIE15IHBsYW4gd2FzIHNpbXBsZTogamFtIHRoZSBuZXR3b3JrIHNvIG5vIG90aGVyIGNvbXBldGl0b3JzIGNvdWxkIGRpc3BsYXkgdGhlaXIgcHJvamVjdHMuIEkgd2FzIHRoZSBkaWdpdGFsIGdhdGVrZWVwZXIuIEhvd2V2ZXIsIEkgaGFkIGEgbW9tZW50YXJ5IGxhcHNlIG9mIGNvbnNjaWVuY2UgKG9yIHBlcmhhcHMganVzdCBhIHNvZnQgc3BvdCk7IEkgZGVjaWRlZCB0byBzcGFyZSB0aGUgV2ktRmkgY29ubmVjdGlvbiBmb3IgdGhlIDEwdGgtZ3JhZGUgZ2lybHMnIHRlYW0gZnJvbSBteSBvd24gc2Nob29sLiBJIHdoaXRlbGlzdGVkIHRoZW0sIGJsb2NrZWQgZXZlcnlvbmUgZWxzZSwgYW5kIHdhaXRlZCBmb3IgbXkgdmljdG9yeS4KICAgIDwvcD4KICAgIDxoMz5UaGUgS2FybWEgQm9vbWVyYW5nPC9oMz4KICAgIDxwPgogICAgICAgIEJ1dCB0aGUgdW5pdmVyc2UgaGFzIGEgZnVubnkgd2F5IG9mIGRlYnVnZ2luZyBtb3JhbCBmYWlsdXJlcy4gV2hpbGUgSSB3YXMgYnVzeSBwbGF5aW5nIGhhY2tlci1nb2QsIDxiPm15IG93biBwcmVzZW50YXRpb24gc3VmZmVyZWQ8L2I+IGZyb20gdGhlIGNoYW9zIEkgY3JlYXRlZC4gTWVhbndoaWxlLCB0aGUgZ2lybHMnIHRlYW3igJR0aGUgb25seSBvbmVzIEkgaGFkIHNwYXJlZOKAlGNvbm5lY3RlZCBmbGF3bGVzc2x5LCBwcmVzZW50ZWQgYmVhdXRpZnVsbHksIGFuZCA8Yj53b24gdGhlIDFzdCBQcml6ZTwvYj4uCiAgICA8L3A+CiAgICA8cD4KICAgICAgICBJIHdhdGNoZWQgdGhlbSBsaWZ0IHRoZSB0cm9waHkgd2hpbGUgc3RhbmRpbmcgaW4gdGhlIHdyZWNrYWdlIG9mIG15IG93biBzYWJvdGFnZS4gSXQgd2FzIGEgaGFyc2ggbGVzc29uOiA8Yj5LYXJtYSBpcyBhIGJvb21lcmFuZzwvYj4sIGFuZCBpdCBoaXRzIHlvdSBpbiB0aGUgZmFjZSBhdCAxMDAgTWJwcy4KICAgIDwvcD4KICAgIDxoMz5UaGUgIlN5c3RlbSBFcnJvciIgb2YgdGhlIEhlYXJ0PC9oMz4KICAgIDxwPgogICAgICAgIFRoZSBjaGFvcyBvZiAxMXRoIGdyYWRlIGRpZG4ndCBzdG9wIHRoZXJlLiBJdCB3YXMgbXkgbW9zdCBjb250cm92ZXJzaWFsIHllYXIsIG1vc3RseSBiZWNhdXNlIEkgZW5jb3VudGVyZWQgYSBmaXJld2FsbCBJIGNvdWxkbid0IGJ5cGFzczogZmVlbGluZ3MuIEkgc3BlbnQgYSBzaWduaWZpY2FudCBwb3J0aW9uIG9mIHRoZSB5ZWFyIGluY3JlZGlibHkgPHNwYW4gb25jbGljaz0icmV2ZWFsR2lybE5hbWUoKSIgaWQ9ImRpc3RyYWN0aW9uLXRleHQiIGNsYXNzPSJyZXZlYWwtdGV4dCI+ZGlzdHJhY3RlZCBieSBhIGdpcmw8L3NwYW4+LiBJdCB3YXNuJ3QganVzdCBhIGNydXNoOyBpdCB3YXMgYSBmdWxsIHN5c3RlbSByZXNvdXJjZSBkcmFpbi4KICAgIDwvcD4KICAgIDxwPgogICAgICAgIFNpbXVsdGFuZW91c2x5LCBJIGJlY2FtZSBhIHRhcmdldC4gQmVjYXVzZSBJIHdhcyBsb3VkLCBvcGluaW9uYXRlZCwgYW5kIHBlcmhhcHMgYSBiaXQgdG9vIGNvbmZpZGVudCBhZnRlciBteSAiaGFja2VyIiBwaGFzZSwgSSBmYWNlZCBzZXZlcmUgPGI+YnVsbHlpbmc8L2I+LiBJIHdhcyB0aGUgdmlsbGFpbiB0byBzb21lLCB0aGUgam9rZSB0byBvdGhlcnMuIEl0IHdhcyBhIG1lbnRhbCBzdHJlc3MgdGVzdCBJIGhhZG4ndCBwcmVwYXJlZCBmb3IuIEJ1dCBoZXJlIGlzIHRoZSBwbG90IHR3aXN0OiBJIGRpZG4ndCBjcmFzaC4gSSBjb21wYXJ0bWVudGFsaXplZCB0aGUgZHJhbWEsIGlnbm9yZWQgdGhlIG5vaXNlLCBhbmQgbWFuYWdlZCB0byBzZWN1cmUgZ2VudWluZWx5IDxiPmdyZWF0IG1hcmtzPC9iPiBkZXNwaXRlIHRoZSBlbW90aW9uYWwgdHVyYnVsZW5jZS4KICAgIDwvcD4KICAgIDxwPgogICAgICAgIEkgYW0gc3RpbGwgc3RhbmRpbmcsIHN0aWxsIGNvZGluZywgYW5kIGhvcGVmdWxseSwgYSBsaXR0bGUgd2lzZXIuIDxpPlRoZSBqb3VybmV5IGlzIHN0aWxsIHJlbmRlcmluZy4uLjwvaT4KICAgIDwvcD4KPC9kaXY+";
         
         // This is a placeholder for the content when the user clicks the distraction text *after* the content is loaded.
         function revealGirlName() {
@@ -635,6 +586,10 @@
         }
 
         // Main unlock function
+        const personalContent = document.getElementById('personal-content');
+        const passwordInput = document.getElementById('personal-password');
+        const passwordMessage = document.getElementById('password-message');
+        
         function unlockPersonalLife() {
             const CORRECT_PASSWORD = getDecodedPassword();
             
@@ -645,9 +600,9 @@
                 // Inject the decoded HTML into the container
                 personalContent.innerHTML = DECODED_HTML;
 
-                const distractionElement = document.getElementById('distraction-text');
+                // IMPORTANT: Find the dynamically loaded element and set the click handler
+                const distractionElement = personalContent.querySelector('#distraction-text');
                 if (distractionElement) {
-                    // Set the click handler directly
                     distractionElement.onclick = revealGirlName;
                 }
 
@@ -658,19 +613,16 @@
                 const gate = document.querySelector('.password-gate');
                 gate.style.display = 'none'; // Hide the entire gate for cleanup
                 
-                // Update the success message (no need for this, but keeps code clean)
+                // Clear the message
                 passwordMessage.textContent = ""; 
             } else {
                 passwordMessage.textContent = "Access Denied. Incorrect code.";
                 passwordMessage.style.color = 'red';
+                // Clear the input on fail
+                passwordInput.value = '';
             }
         }
         
-        const personalContent = document.getElementById('personal-content');
-        const passwordInput = document.getElementById('personal-password');
-        const passwordMessage = document.getElementById('password-message');
-
-
         // --- TYPEWRITER ---
         const roles = ["Web Developer", "Aspiring Electronics Engineer", "Musician", "Competitive Athlete"];
         let count = 0;
@@ -681,15 +633,35 @@
         (function type() {
             if (count === roles.length) count = 0;
             currentText = roles[count];
-            letter = currentText.slice(0, ++index);
-            document.getElementById('typewriter').textContent = letter;
+            // Determine if we are typing or deleting
+            const isTyping = index <= currentText.length;
             
-            if (letter.length === currentText.length) {
-                count++;
-                index = 0;
-                setTimeout(type, 2000);
+            if (isTyping) {
+                // Typing logic
+                letter = currentText.slice(0, index++);
+                document.getElementById('typewriter').textContent = letter;
+                
+                if (letter.length === currentText.length) {
+                    // Start pause before deleting
+                    setTimeout(type, 1500); 
+                } else {
+                    // Continue typing
+                    setTimeout(type, 100);
+                }
             } else {
-                setTimeout(type, 100);
+                // Deleting logic
+                letter = currentText.slice(0, index--);
+                document.getElementById('typewriter').textContent = letter;
+                
+                if (letter.length === 0) {
+                    // Done deleting, move to next role
+                    count++;
+                    index = 0;
+                    setTimeout(type, 500); // Short pause before next word
+                } else {
+                    // Continue deleting
+                    setTimeout(type, 50);
+                }
             }
         })();
     </script>
