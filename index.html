@@ -72,10 +72,6 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        @keyframes shine {
-            0% { background-position: 200% center; }
-            100% { background-position: -200% center; }
-        }
 
         /* --- LOGO STYLES (NAV BAR) --- */
         .logo {
@@ -116,7 +112,7 @@
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; 
             padding: 100px 20px 50px 20px; position: relative; overflow: hidden;
         }
-        /* New Dynamic Background Layer */
+        /* Dynamic Background Layer */
         .hero::before {
             content: '';
             position: absolute;
@@ -198,6 +194,62 @@
         .hobby-card:hover { border-color: var(--secondary); transform: translateY(-3px); }
         .hobby-card i { font-size: 2.2rem; color: var(--secondary); margin-bottom: 15px; }
 
+        /* Password Gate Styling */
+        .password-gate { text-align: center; max-width: 400px; margin: 0 auto; }
+        .password-gate input { margin-bottom: 15px; text-align: center; }
+        .password-gate .btn { padding: 10px 25px; width: auto; }
+        .password-gate-message { color: var(--primary); margin-top: 15px; }
+
+        /* Hidden Content Default State */
+        .hidden-content { display: none; }
+        /* Show the main content only when gate is passed */
+        .content-visible { display: block; }
+        
+        .personal-card {
+            background: var(--card-bg); 
+            border: 2px solid var(--secondary);
+            border-radius: 16px; 
+            padding: 40px; 
+            margin: 40px auto; 
+            text-align: left; 
+            max-width: 900px;
+            box-shadow: 0 0 25px rgba(112, 0, 255, 0.3); /* Purple Glow */
+        }
+        .personal-card h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 10px;
+        }
+        .personal-card p {
+            font-size: 1.05rem; 
+            line-height: 1.9;
+            color: var(--text-main);
+            margin-bottom: 25px;
+        }
+        .personal-card strong {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        /* New Style for Clickable Text Reveal */
+        .reveal-text {
+            color: var(--primary);
+            font-weight: 700;
+            cursor: pointer;
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 1px dashed var(--primary); /* subtle hint that it's clickable */
+            display: inline-block;
+            padding-bottom: 2px;
+        }
+        .reveal-text:hover {
+            color: var(--secondary);
+            border-bottom: 1px dashed var(--secondary);
+        }
+
+
         /* --- FORM & FOOTER (Standard) --- */
         .form-group { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
         input, textarea {
@@ -256,6 +308,7 @@
             .section { padding: 60px 0; }
             .section-title { font-size: 1.8rem; margin-bottom: 40px; }
             .about .card p { font-size: 1rem; }
+            .personal-card { padding: 25px; }
 
             .hobby-grid {
                 grid-template-columns: repeat(2, 1fr); 
@@ -303,6 +356,7 @@
                     <li><a href="#about" class="hover-grad" onclick="closeMenu()">About</a></li>
                     <li><a href="#skills" class="hover-grad" onclick="closeMenu()">Skills</a></li>
                     <li><a href="#projects" class="hover-grad" onclick="closeMenu()">Projects</a></li>
+                    <li><a href="#personal-life" class="hover-grad" onclick="closeMenu()">Personal Life</a></li>
                     <li><a href="#contact" class="hover-grad" onclick="closeMenu()">Contact</a></li>
                 </ul>
                 
@@ -342,7 +396,7 @@
             <h2 class="section-title"><span>01.</span><span class="hover-grad">About Me</span></h2>
             <div class="card" style="text-align: center; max-width: 850px; margin: 0 auto;">
                 <p style="font-size: 1.1rem; line-height: 1.8;">
-                    I am a highly driven **16-year-old** engineering enthusiast from TRICHY. I don't just write code; I bridge the gap between software and the physical world. My expertise spans **Full-Stack Web Development**, **Robotics Engineering**, and **IoT Systems**. I am dedicated to building **smart, scalable solutions** for tomorrow's challenges.
+                    I am a highly driven **16-year-old** engineering enthusiast from Trichy. I don't just write code; I bridge the gap between software and the physical world. My expertise spans **Full-Stack Web Development**, **Aspiring Robotics Engineering**, and **IoT Systems**. I am dedicated to building **smart, scalable solutions** for tomorrow's challenges.
                 </p>
             </div>
             
@@ -425,9 +479,56 @@
         </div>
     </section>
 
+    <section id="personal-life" class="section">
+        <div class="container">
+            <h2 class="section-title"><span>04.</span><span class="hover-grad">The Archive: Unfiltered (Password Required)</span></h2>
+            
+            <div class="password-gate">
+                <p style="color: var(--text-muted); margin-bottom: 25px;">Enter the confidential access code to proceed.</p>
+                <input type="password" id="personal-password" placeholder="Enter Code">
+                <button class="btn" onclick="unlockPersonalLife()">Unlock</button>
+                <p id="password-message" class="password-gate-message"></p>
+            </div>
+
+            <div id="personal-content" class="hidden-content">
+                <div class="personal-card">
+                    <h3>The Life Behind the Code: A Chaotic, Yet Determined, Timeline</h3>
+                    
+                    <p>
+                        So, you’ve breached the firewall. Welcome to the uncut version. My story starts in **Salem** where I was born on **May 28, 2009**. However, my foundational years were spent absorbing the electric energy and chaos of **Chennai**. I spent my foundation years, right up till the 8th standard, at **L.M. Dadha Senior Secondary School**. That whole stretch includes the great global pause—COVID—which, for me, meant 6th and 7th grade were conducted via my laptop screen. Honestly, those two years of mandatory online learning probably did more for my self-taught tech skills than any textbook ever could!
+                    </p>
+                    
+                    <p>
+                        The big school change came in the 9th standard when the family finally moved, and I enrolled in **Alpha Wisdom Vidhyashram** here in **Trichy**. The shifting landscape from Chennai to Trichy was jarring, but it forced me to adapt and focus—a necessary process for any high-functioning system.
+                    </p>
+
+                    <h3>The Competition: Where I Learned That Karma Runs on Fiber Optic</h3>
+                    
+                    <p>
+                        The peak of my early competitive career involved a zonal competition at RSK School, and oh, the shame. My school had two projects: mine, a truly complex system, and a simpler one by a 10th-grade team. My competitive spirit decided to go rogue. I looked at the patchy presentation facilities and thought, "What if *nobody* could present digitally?" So, I did it. I **hacked the school's Wi-Fi network**, intending to crash the displays of every competitor.
+                    </p>
+                    
+                    <p>
+                        In my hubris, I only spared the Wi-Fi for the 10th-grade girl's team, mostly because their project was simpler and they were from a junior grade. They connected flawlessly. I, the brilliant network saboteur, watched in real-time as **my own project failed to display** (due to my self-imposed blackout) and the 10th-grade team easily **scooped up the prize**. It was a cinematic moment of pure digital karma. It taught me that sometimes, the most sophisticated hack is simply showing up with a working presentation—and that the universe favors the ethically uncomplicated.
+                    </p>
+
+                    <h3>11th Grade: The Social Crucible</h3>
+                    
+                    <p>
+                        And that brings us to the **11th standard**, which has felt less like a stepping stone and more like a tightrope walk over a volcano. It’s been my most defining and controversial year. The human element got complicated: I was incredibly <span onclick="revealGirlName()" id="distraction-text" class="reveal-text">distracted by a girl</span>, which is apparently a prerequisite for teenage existence. On top of that, being a kid with strong beliefs and a loud voice meant I faced my fair share of petty **bullying** for daring to have an opinion.
+                    </p>
+                    
+                    <p>
+                        But here's the kicker: I didn't let any of it slide. I battled through the social nonsense, ignored the drama, and managed to secure some genuinely **great marks**. I might be a little rough around the edges, occasionally too bold, and perpetually sleep-deprived, but I have earned my name in that classroom. This year is still ongoing, and I fully intend to end it with a successful academic compilation, hopefully without any further network breaches. **The journey continues...**
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="contact" class="section">
         <div class="container">
-            <h2 class="section-title"><span>04.</span><span class="hover-grad">Get In Touch</span></h2>
+            <h2 class="section-title"><span>05.</span><span class="hover-grad">Get In Touch</span></h2>
             <form class="form-group" action="mailto:rehan28052009@gmail.com" method="post" enctype="text/plain">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
@@ -442,7 +543,7 @@
 
     <footer class="footer">
         <div class="socials">
-            <a href="https://instagram.com/robozonics"><i class="fab fa-instagram"></i></a>
+            <a href="https://instagram.com/robozonics" target="_blank"><i class="fab fa-instagram"></i></a>
             <a href="https://www.linkedin.com/in/rehan-rs-b6406635b" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="https://x.com/robozonics" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
         </div>
@@ -529,6 +630,43 @@
             hamburger.querySelector('i').classList.remove('fa-times');
             hamburger.querySelector('i').classList.add('fa-bars');
         }
+
+        // --- PASSWORD GATE LOGIC ---
+        const CORRECT_PASSWORD = "8ergaz4yhd"; 
+        const personalContent = document.getElementById('personal-content');
+        const passwordInput = document.getElementById('personal-password');
+        const passwordMessage = document.getElementById('password-message');
+
+        function unlockPersonalLife() {
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                personalContent.classList.remove('hidden-content');
+                personalContent.classList.add('content-visible');
+                
+                // Hide the password form elements
+                document.querySelector('.password-gate p').style.display = 'none';
+                passwordInput.style.display = 'none';
+                document.querySelector('.password-gate button').style.display = 'none';
+                
+                // Update the success message
+                passwordMessage.textContent = "Access Granted. Archive Unlocked.";
+                passwordMessage.style.color = 'var(--primary)';
+            } else {
+                passwordMessage.textContent = "Access Denied. Incorrect code mail rehan28052009@gmail.com for the CORRECT PASSWORD.";
+                passwordMessage.style.color = 'red';
+            }
+        }
+        
+        // --- NITHYA SREE REVEAL LOGIC ---
+        function revealGirlName() {
+            const distractionText = document.getElementById('distraction-text');
+            if (distractionText.innerHTML.includes('distracted by a girl')) {
+                distractionText.innerHTML = "distracted by **Nithya Sree**";
+                distractionText.classList.remove('reveal-text'); // Remove click style after reveal
+                distractionText.style.cursor = 'default';
+                distractionText.style.borderBottom = 'none';
+            }
+        }
+
 
         // --- TYPEWRITER ---
         const roles = ["Web Developer", "Aspiring Electronics Engineer", "Musician", "Competitive Athlete"];
