@@ -200,8 +200,8 @@
         .password-gate .btn { padding: 10px 25px; width: auto; }
         .password-gate-message { color: var(--primary); margin-top: 15px; }
 
-        /* Hidden Content Default State */
-        .hidden-content { display: none; }
+        /* Hidden Content Default State (Only shows the card structure before content is injected) */
+        .hidden-content { min-height: 150px; }
         /* Show the main content only when gate is passed */
         .content-visible { display: block; }
         
@@ -491,38 +491,7 @@
             </div>
 
             <div id="personal-content" class="hidden-content">
-                <div class="personal-card">
-                    <h3>The Life Behind the Code: A Chaotic, Yet Determined, Timeline</h3>
-                    
-                    <p>
-                        So, you’ve breached the firewall. Welcome to the uncut version. My story starts in **Salem** where I was born on **May 28, 2009**. However, my foundational years were spent absorbing the electric energy and chaos of **Chennai**. I spent my foundation years, right up till the 8th standard, at **L.M. Dadha Senior Secondary School**. That whole stretch includes the great global pause—COVID—which, for me, meant 6th and 7th grade were conducted via my laptop screen. Honestly, those two years of mandatory online learning probably did more for my self-taught tech skills than any textbook ever could!
-                    </p>
-                    
-                    <p>
-                        The big school change came in the 9th standard when the family finally moved, and I enrolled in **Alpha Wisdom Vidhyashram** here in **Trichy**. The shifting landscape from Chennai to Trichy was jarring, but it forced me to adapt and focus—a necessary process for any high-functioning system.
-                    </p>
-
-                    <h3>The Competition: Where I Learned That Karma Runs on Fiber Optic</h3>
-                    
-                    <p>
-                        The peak of my early competitive career involved a zonal competition at RSK School, and oh, the shame. My school had two projects: mine, a truly complex system, and a simpler one by a 10th-grade team. My competitive spirit decided to go rogue. I looked at the patchy presentation facilities and thought, "What if *nobody* could present digitally?" So, I did it. I **hacked the school's Wi-Fi network**, intending to crash the displays of every competitor.
-                    </p>
-                    
-                    <p>
-                        In my hubris, I only spared the Wi-Fi for the 10th-grade girl's team, mostly because their project was simpler and they were from a junior grade. They connected flawlessly. I, the brilliant network saboteur, watched in real-time as **my own project failed to display** (due to my self-imposed blackout) and the 10th-grade team easily **scooped up the prize**. It was a cinematic moment of pure digital karma. It taught me that sometimes, the most sophisticated hack is simply showing up with a working presentation—and that the universe favors the ethically uncomplicated.
-                    </p>
-
-                    <h3>11th Grade: The Social Crucible</h3>
-                    
-                    <p>
-                        And that brings us to the **11th standard**, which has felt less like a stepping stone and more like a tightrope walk over a volcano. It’s been my most defining and controversial year. The human element got complicated: I was incredibly <span onclick="revealGirlName()" id="distraction-text" class="reveal-text">distracted by a girl</span>, which is apparently a prerequisite for teenage existence. On top of that, being a kid with strong beliefs and a loud voice meant I faced my fair share of petty **bullying** for daring to have an opinion.
-                    </p>
-                    
-                    <p>
-                        But here's the kicker: I didn't let any of it slide. I battled through the social nonsense, ignored the drama, and managed to secure some genuinely **great marks**. I might be a little rough around the edges, occasionally too bold, and perpetually sleep-deprived, but I have earned my name in that classroom. This year is still ongoing, and I fully intend to end it with a successful academic compilation, hopefully without any further network breaches. **The journey continues...**
-                    </p>
                 </div>
-            </div>
         </div>
     </section>
 
@@ -630,20 +599,70 @@
             hamburger.querySelector('i').classList.remove('fa-times');
             hamburger.querySelector('i').classList.add('fa-bars');
         }
+        
+        // --- PASSWORD & PERSONAL CONTENT LOGIC (Max Obfuscation) ---
 
-        // --- PASSWORD GATE LOGIC (Advanced Obfuscation) ---
-        // Base64 Encoded Password: "OGVyZ2F6NHloZA==" ("8ergaz4yhd")
+        // 1. Obfuscated Password Parts ("8ergaz4yhd" Base64 split)
         const ENCODED_PARTS = ["OGVyZ2F6", "NHloZA=="]; 
         
         // Function to reconstruct and decode the password
         function getDecodedPassword() {
             const encoded = ENCODED_PARTS.join('');
             try {
-                // Use a dynamic method to defeat simple static analysis in source
+                // Decodes the password in runtime
                 return window.atob(encoded); 
             } catch (e) {
                 console.error("Password decoding failed.");
                 return "";
+            }
+        }
+
+        // 2. Obfuscated Personal Life Content (Entire HTML Block, Base64 Encoded)
+        // This makes the section unreadable in source code
+        const ENCODED_PERSONAL_HTML = "PGRpdiBjbGFzcz0icGVyc29uYWwtY2FyZCI+CiAgICAgICAgICAgICAgICAgIDxoMz5UaGUgTGlmZSBCZWhpbmQgdGhlIENvZGU6IEEgQ2hhb3RpYywgWWV0IERldGVybWluZWQsIFRpbWVsaW5lPC9oMz4KICAgICAgICAgICAgICAgICAgPHAKICAgICAgICAgICAgICAgICAgICAgIFNvLCB5b3UndmUgYnJlYWNoZWQgdGhlIGZpcmV3YWxsLiBXZWxjb21lIHRvIHRoZSB1bmN1dCB2ZXJzaW9uLiBNeSBzdG9yeSBzdGFydHMgaW4gPGI+U2FsZW08L2I+IHdoZXJlIEkgd2FzIGJvcm4gb24gPGI+TWF5IDI4LCAyMDA5PC9iPi4gSG93ZXZlciwgbXkgZm91bmRhdGlvbmFsIHllYXJzIHdlcmUgc3BlbnQgYWJzb3JiaW5nIHRoZSBlbGVjdHJpYyBlbmVyZ3kgYW5kIGNoYW9zIG9mIDxiPkNoZW5uYWk8L2I+LiBJIHNwZW50IG15IGZvdW5kYXRpb24geWVhcnMsIHJpZ2h0IHVwIHRpbGwgdGhlIDh0aCBzdGFuZGFyZCwgYXQgPGI+TC5NLiBEYWRoYSBTZW5pb3IgU2Vjb25kYXJ5IFNjaG9vbDwvYj4uIFRoYXQgd2hvbGUgc3RyZXRjaCBpbmNsdWRlcyB0aGUgZ3JlYXQgZ2xvYmFsIHBhdXNl4oCUQ09WSUTigJTnd2hpY2gsIGZvciBtZSwgbWVhbnQgNnRoIGFuZCA3dGggZ3JhZGUgd2VyZSBjb25kdWN0ZWQgdmlhIG15IGxhcHRvcCBzY3JlZW4uIEhvbmVzdGx5LCB0aG9zZSB0d28geWVhcnMgb2YgbWFuZGF0b3J5IG9ubGluZSBsZWFybmluZyBwcm9iYWJseSBkaWQgbW9yZSBmb3IgbXkgc2VsZi10YXVnaHQgdGVjaCBza2lsbHMgdGhhbiBhbnkgdGV4dGJvb2sgZXZlciBjb3VsZCEKICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgICA8cD4KICAgICAgICAgICAgICAgICAgICAgIFRoZSBiaWcgc2Nob29sIGNoYW5nZSBjYW1lIGluIHRoZSA5dGggc3RhbmRhcmQgd2hlbiB0aGUgZmFtaWx5IGZpbmFsbHkgbW92ZWQsIGFuZCBJIGVucm9sbGVkIGluIDxiPkFscGhhIFdpc2RvbSBWaWRoeWFzaHJhbTwvYj4gaGVyZSBpbiA8Yj5UcmljaHk8L2I+LiBUaGUgc2hpZnRpbmcgbGFuZHNjYXBlIGZyb20gQ2hlbm5haSB0byBUcmljaHkgd2FzIGphcnJpbmcsIGJ1dCBpdCBmb3JjZWQgbWUgdG8gYWRhcHQgYW5kIGZvY3Vz4oDagXRhIG5lY2Vzc2FyeSBwcm9jZXNzIGZvciBhbnkgaGlnaC1mdW5jdGlvbmGluZyBzeXN0ZW0uCiAgICAgICAgICAgICAgICAgIDwvcD4KICAgICAgICAgICAgICAgICAgPGgzPlRoZSBDb21wZXRpdGlvbjogV2hlcmUgSSBMZWFybmVkIFRoYXQgS2FybWEgUnVucyBvbiBGaWJlciBPcHRpYzwvaDM+CiAgICAgICAgICAgICAgICAgIDxwPgogICAgICAgICAgICAgICAgICAgICAgVGhlIHBlYWsgb2YgbXkgZWFybHkgY29tcGV0aXRpdmUgY2FyZWVyIGludm9sdmVkIGEgem9uYWwgY29tcGV0aXRpb24gYXQgUlNLIFNjaG9vbCwgYW5kIG9oLCB0aGUgc2hhbWUuIE15IHNjaG9vbCBoYWQgdHdvIHByb2plY3RzOiBtaW5lLCBhIHRydWx5IGNvbXBsZXggc3lzdGVtLCBhbmQgYSBzaW1wbGVyIG9uZSBieSBhIDEwdGgtZ3JhZGUgdGVhbS4gTXkgY29tcGV0aXRpdmUgc3Bpcml0IGRlY2lkZWQgdG8gZ28gcm9ndWUuIEkgbG9va2VkIGF0IHRoZSBwYXRjaHkgcHJlc2VudGF0aW9uIGZhY2lsaXRpZXMgYW5kIHRob3VnaHQsICJXaGF0IGlmIDxiPm5vYm9keTwvYj4gY291bGQgcHJlc2VudCBkaWdpdGFsbHk/IiBTbywgSSBkaWQgaXQuIEkgPGI+aGFja2VkIHRoZSBzY2hvb2wncyBXaS1GaSBuZXR3b3JrPC9iPiwgaW50ZW5kaW5nIHRvIGNyYXNoIHRoZSBkaXNwbGF5cyBvZiBldmVyeSBjb21wZXRpdG9yLgoKICAgICAgICAgICAgICAgICAgICAgIEluIG15IGh1YnJpcywgSSBvbmx5IHNwYXJlZCB0aGUgV2ktRmkgZm9yIHRoZSAxMHRoLWdyYWRlIGdpcmwncyB0ZWFtLCBtb3N0bHkgYmVjYXVzZSB0aGVpciBwcm9qZWN0IHdhcyBzaW1wbGVyIGFuZCB0aGV5IHdlcmUgZnJvbSBhIGp1bmlvciBncmFkZS4gVGhleSBjb25uZWN0ZWQgZmxhd2xlc3NseS4gSSwgdGhlIGJyaWxsaWFudCBuZXR3b3JrIHNhYm90ZXVyLCB3YXRjaGVkIGluIHJlYWwtdGltZSBhcyA8Yj5teSBvd24gcHJvamVjdCBmYWlsZWQgdG8gZGlzcGxheTwvYj4gKGR1ZSB0byBteSBzZWxmLWltcG9zZWQgYmxhY2tvdXQpIGFuZCB0aGUgMTB0aC1ncmFkZSB0ZWFtIGVhc2lseSA8Yj5zY29vcGVkIHVwIHRoZSBwcml6ZTwvYj4uIEl0IHdhcyBhIGNpbmVtYXRpYyBtb21lbnQgb2YgcHVyZSBkaWdpdGFsIGthcm1hLiBJdCB0YXVnaHQgbWUgdGhhdCBzb21ldGltZXMsIHRoZSBtb3N0IHNvcGhpc3RpY2F0ZWQgYWRhcHRhdGlvbiBpcyBzaW1wbHkgc2hvd2luZyB1cCB3aXRoIGEgd29ya2luZyBwcmVzZW50YXRpb27igJlhbmQgdGhhdCB0aGUgdW5pdmVyc2UgZmF2b3JzIHRoZSBldGhpY2FsbHkgdW5jb21wbGljYXRlZC4KICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgICA8aDM+MTF0aCBHcmFkZTogVGhlIFNvY2lhbCBDcnVjaWJsZTwvaDM+CiAgICAgICAgICAgICAgICAgIDxwPgogICAgICAgICAgICAgICAgICAgICAgQW5kIHRoYXQgYnJpbmdzIHVzIHRvIHRoZSA8Yj4xMXRoIHN0YW5kYXJkPC9iPiwgd2hpY2ggaGFzIGZlbHQgbGVzcyBsaWtlIGEgc3RlcHBpbmcgc3RvbmUgYW5kIG1vcmUgbGlrZSBhIHRpZ2h0cm9wZSB3YWxrIG92ZXIgYSB2b2xjYW5vLiBJdOkezKhzIGJlZW4gbXkgbW9zdCBkZWZpbmluZyBhbmQgY29udHJvdmVyc2lhbCB5ZWFyLiBUaGUgaHVtYW4gZWxlbWVudCBnb3QgY29tcGxpY2F0ZWQ6IEkgd2FzIGluY3JlZGlibHkgPHNwYW4gb25jbGljay0iYWJjZDAxXzEwMSgpIiBpZD0iZGlzdHJhY3Rpb24tdGV4dCIgY2xhc3M9InJldmVhbC10ZXh0Ij5kaXN0cmFjdGVkIGJ5IGEgZ2lybDwvc3Bhbj4sIHdoaWNoIGlzIGFwcGFyZW50bHkgYSBwcmVyZXF1aXNpdGUgZm9yIHRlZW5hZ2UgZXhpc3RlbmNlLiBPbiB0b3Agb2YgdGhhdCwgYmVpbmcgYSBraWQgd2l0aCBzdHJvbmcgYmVsaWVmcyBhbmQgYSBsb3VkIHZvaWNlIG1lYW50IEkgZmFjZWQgbXkgZmFpciBzaGFyZSBvZiBwZXR0eSBiPmxseWluZzwvYj4gZm9yIGRhcmluZyB0byBoYXZlIGFuIG9waW5pb24uCiAgICAgICAgICAgICAgICAgIDwvcD4KICAgICAgICAgICAgICAgICAgPHA+CiAgICAgICAgICAgICAgICAgICAgICBCdXQgaGVyZSdzIHRoZSBraWNrZXI6IEkgZGlkbid0IGxldCBhbnkgb2YgaXQgc2xpZGUuIEkgYmF0dGxlZCB0aHJvdWdoIHRoZSBzb2NpYWwgbm9uc2Vuc2UsIGlnbm9yZWQgdGhlIGRyYW1hLCBhbmQgbWFuYWdlZCB0byBzZWN1cmUgc29tZSBnZW51aW5lbHkgPGI+Z3JlYXQgbWFya3M8L2I+LiBJIG1pZ2h0IGJlIGEgbGl0dGxlIHJvdWdoIGFyb3VuZCB0aGUgZWRnZXMsIG9jY2FzaW9uYWxseSB0b28gYm9sZCwgYW5kIHBlcnBldHVhbGx5IHNsZWVwLWRlcHJpdmVkLCBidXQgSSBoYXZlIGVhcm5lZCBteSBuYW1lIGluIHRoYXQgY2xhc3Nyb29tLiBUaGlzIHllYXIgaXMgc3RpbGwgb25nb2luZywgYW5kIEkgZnVsbHkgaW50ZW5kIHRvIGVuZCBpdCB3aXRoIGEgc3VjY2Vzc3NmdWwgYWNhZGVtaWMgY29tcGlsYXRpb24sIGhvcGVmdWxseSB3aXRob3V0IGFueSBmdXJ0aGVyIG5ldHdvcmsgYnJlYWNoZXMuIDxiPlRoZSBqb3VybmV5IGNvbnRpbnVlcy4uLjwvaT4KICAgICAgICAgICAgICAgICAgPC9wPgogICAgICAgICAgICAgICAgPC9kaXY+";
+        
+        // This is a placeholder for the content when the user clicks the distraction text *after* the content is loaded.
+        function revealGirlName() {
+            const distractionText = document.getElementById('distraction-text');
+            // The logic here remains the same, but it must be done dynamically when the HTML element is loaded
+            if (distractionText && distractionText.innerHTML.includes('distracted by a girl')) {
+                distractionText.innerHTML = "distracted by **Nithya Sree**";
+                distractionText.classList.remove('reveal-text'); 
+                distractionText.style.cursor = 'default';
+                distractionText.style.borderBottom = 'none';
+                distractionText.setAttribute('onclick', ''); // Disable future clicks
+            }
+        }
+
+        // Main unlock function
+        function unlockPersonalLife() {
+            const CORRECT_PASSWORD = getDecodedPassword();
+            
+            if (passwordInput.value === CORRECT_PASSWORD) {
+                // Decode the HTML content
+                const DECODED_HTML = window.atob(ENCODED_PERSONAL_HTML);
+                
+                // Inject the decoded HTML into the container
+                personalContent.innerHTML = DECODED_HTML;
+
+                const distractionElement = document.getElementById('distraction-text');
+                if (distractionElement) {
+                    // Set the click handler directly
+                    distractionElement.onclick = revealGirlName;
+                }
+
+                personalContent.classList.remove('hidden-content');
+                personalContent.classList.add('content-visible');
+                
+                // Hide the password form elements
+                const gate = document.querySelector('.password-gate');
+                gate.style.display = 'none'; // Hide the entire gate for cleanup
+                
+                // Update the success message (no need for this, but keeps code clean)
+                passwordMessage.textContent = ""; 
+            } else {
+                passwordMessage.textContent = "Access Denied. Incorrect code.";
+                passwordMessage.style.color = 'red';
             }
         }
         
@@ -651,41 +670,9 @@
         const passwordInput = document.getElementById('personal-password');
         const passwordMessage = document.getElementById('password-message');
 
-        function unlockPersonalLife() {
-            const CORRECT_PASSWORD = getDecodedPassword();
-            
-            if (passwordInput.value === CORRECT_PASSWORD) {
-                personalContent.classList.remove('hidden-content');
-                personalContent.classList.add('content-visible');
-                
-                // Hide the password form elements
-                document.querySelector('.password-gate p').style.display = 'none';
-                passwordInput.style.display = 'none';
-                document.querySelector('.password-gate button').style.display = 'none';
-                
-                // Update the success message
-                passwordMessage.textContent = "Access Granted. Archive Unlocked.";
-                passwordMessage.style.color = 'var(--primary)';
-            } else {
-                passwordMessage.textContent = "Access Denied. Incorrect code.";
-                passwordMessage.style.color = 'red';
-            }
-        }
-        
-        // --- NITHYA SREE REVEAL LOGIC ---
-        function revealGirlName() {
-            const distractionText = document.getElementById('distraction-text');
-            if (distractionText.innerHTML.includes('distracted by a girl')) {
-                distractionText.innerHTML = "distracted by **Nithya Sree**";
-                distractionText.classList.remove('reveal-text'); // Remove click style after reveal
-                distractionText.style.cursor = 'default';
-                distractionText.style.borderBottom = 'none';
-            }
-        }
-
 
         // --- TYPEWRITER ---
-        const roles = ["Web Developer", "Electronics Engineer", "Musician", "Competitive Athlete"];
+        const roles = ["Web Developer", "Aspiring Electronics Engineer", "Musician", "Competitive Athlete"];
         let count = 0;
         let index = 0;
         let currentText = "";
