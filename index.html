@@ -540,7 +540,7 @@
             hamburger.querySelector('i').classList.add('fa-bars');
         }
         
-        // --- PASSWORD & PERSONAL CONTENT LOGIC ---
+        
 
       
         const ENCODED_PARTS = ["OGVyZ2F6", "NHloZA=="]; 
@@ -626,11 +626,11 @@
                     typewriterElement.textContent = currentRole.substring(0, charIndex);
 
                     if (!isDeleting && charIndex === currentRole.length) {
-                        // Transition to Deleting after 1.5s pause
+                        
                         isDeleting = true;
                         speed = 1500;
                     } else if (isDeleting && charIndex === 0) {
-                        // Transition to Typing Next Role after 0.5s pause
+                        
                         isDeleting = false;
                         roleIndex = (roleIndex + 1) % roles.length; // Cycle roles
                         speed = 500;
@@ -639,7 +639,7 @@
                     setTimeout(type, speed);
                 }
                 
-                // Start the typewriter only after the DOM is ready
+                
                 type();
             } else {
                 console.error("Typewriter element (#typewriter) not found in the DOM.");
